@@ -77,7 +77,7 @@ class FLDyRichTextUnit extends FLDyRenderUnit {
         children: spanUM.children
             ?.map((spanUM) =>
                 buildTextSpan(spanUM as FLDyTextSpanUnitModel, context))
-            ?.toList());
+            .toList());
   }
 
   @override
