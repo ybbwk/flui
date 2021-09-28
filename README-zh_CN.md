@@ -1,4 +1,6 @@
-[English](https://github.com/Rannie/flui/blob/master/README.md) | 简体中文
+[English](https://github.com/ybbwk/flui/blob/master/README.md) | 简体中文
+
+本项目Fork自 [Rannie/flui](https://github.com/Rannie/flui)，并迁移至Null Safety。
 
 <br />
 <p align="center">
@@ -46,7 +48,16 @@
 
 ```yaml
 dependencies:
-  flui: 0.9.2
+  flui:
+    git: git@github.com:ybbwk/flui.git
+```
+
+#### Gitee
+
+```yaml
+dependencies:
+  flui:
+    git: git@gitee.com:ybbwk/flui.git
 ```
 
 然后运行 `flutter pub get` 下载依赖。

@@ -1,4 +1,6 @@
-English | [简体中文](https://github.com/Rannie/flui/blob/master/README-zh_CN.md)
+English | [简体中文](https://github.com/ybbwk/flui/blob/master/README-zh_CN.md)
+
+This project forked from [Rannie/flui](https://github.com/Rannie/flui), and migrate to Null Safety.
 
 <br />
 <p align="center">
