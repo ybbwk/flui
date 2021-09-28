@@ -43,9 +43,20 @@ Currently supports *v1.17.0* .
 
 #### Setup
 
+##### Github
+
 ```yaml
 dependencies:
-  flui: 0.9.2
+  flui:
+    git: git@github.com:ybbwk/flui.git
+```
+
+#### Gitee
+
+```yaml
+dependencies:
+  flui:
+    git: git@gitee.com:ybbwk/flui.git
 ```
 
 Then run `flutter pub get` to download the dependencies.
