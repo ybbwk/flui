@@ -9,21 +9,21 @@ final _kCopyValue = Random();
 
 class FLCopyableLabel extends StatelessWidget {
   FLCopyableLabel(
-      {Key key,
-      @required this.copyData,
+      {Key? key,
+      required this.copyData,
       this.showMenu = false,
-      @required this.child,
+      required this.child,
       this.afterCopyCallback})
       : super(key: key);
 
   final String copyData;
   final bool showMenu;
   final Widget child;
-  final VoidCallback afterCopyCallback;
+  final VoidCallback? afterCopyCallback;
 
   void _performCopyAction() {
     Clipboard.setData(ClipboardData(text: copyData));
-    if (this.afterCopyCallback != null) this.afterCopyCallback();
+    if (this.afterCopyCallback != null) this.afterCopyCallback!();
   }
 
   Widget _buildGestureWidget() {

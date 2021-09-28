@@ -3,42 +3,41 @@ import 'package:flui/src/dynamic/units/unit_model.dart';
 import 'package:flui/src/dynamic/render_parser.dart';
 import 'package:flui/src/dynamic/units/unit_constant.dart';
 
-abstract class FLDyBaseUnit extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => null;
-}
+abstract class FLDyBaseUnit extends StatelessWidget {}
 
 abstract class FLDyRenderUnit extends FLDyBaseUnit {
-  FLDyRenderUnit({@required this.unitModel})
-      : assert(unitModel != null),
-        super();
+  FLDyRenderUnit({required this.unitModel}) : super();
 
   final FLDyUnitModel unitModel;
-  String get uniqueId => unitModel.uniqueId;
-
-  // subclass override
-  @override
-  Widget build(BuildContext context) => null;
+  String? get uniqueId => unitModel.uniqueId;
 
   // mark up single unit
-  Widget markupUnit(FLDyUnitModel unitModel) =>
-      FLDyRenderParser.parseUnitModel(unitModel);
+  Widget markupUnit(FLDyUnitModel? unitModel) =>
+      FLDyRenderParser.parseUnitModel(unitModel)!;
   // mark up unit list
-  List<Widget> markupUnits(List<FLDyUnitModel> unitModels) {
+  List<Widget> markupUnits(List<FLDyUnitModel>? unitModels) {
     List<Widget> children = [];
-    unitModels.forEach((FLDyUnitModel unitModel) {
-      children.add(markupUnit(unitModel));
+    unitModels?.forEach((FLDyUnitModel unitModel) {
+      Widget? widget = markupUnit(unitModel);
+      if (widget != null) {
+        children.add(widget);
+      }
     });
     return children;
   }
 
   Widget resolveChild() {
-    Widget child;
+    Widget child = Container();
     if (unitModel.align != null && unitModel.child != null)
-      child = resolveAlignChild(unitModel.align, unitModel.child);
+      child = resolveAlignChild(unitModel.align!, unitModel.child!);
     else if (unitModel.align != null && unitModel.children != null)
-      child = resolveAlignChildren(unitModel.align, unitModel.children);
-    else if (unitModel.child != null) child = markupUnit(unitModel.child);
+      child = resolveAlignChildren(unitModel.align!, unitModel.children!);
+    else if (unitModel.child != null) {
+      var widget = markupUnit(unitModel.child!);
+      if (widget != null) {
+        child = widget;
+      }
+    }
     return child;
   }
 
@@ -46,7 +45,7 @@ abstract class FLDyRenderUnit extends FLDyBaseUnit {
   Widget resolveAlignChild(FLDyUnitAlign align, FLDyUnitModel childModel) {
     assert(align != null);
     assert(childModel != null);
-    final Widget widget = markupUnit(childModel);
+    final Widget? widget = markupUnit(childModel);
     return FLDyAlignUnit(
       align: align,
       child: widget,
@@ -74,7 +73,7 @@ abstract class FLDyRenderUnit extends FLDyBaseUnit {
     }
     // position layout
     if (unitModel.positioned != null) {
-      FLDyUnitPositioned positionedConf = unitModel.positioned;
+      FLDyUnitPositioned positionedConf = unitModel.positioned!;
       self = Positioned(
         left: positionedConf.left,
         right: positionedConf.right,
@@ -91,12 +90,12 @@ abstract class FLDyRenderUnit extends FLDyBaseUnit {
 }
 
 class FLDyAlignUnit extends FLDyBaseUnit {
-  FLDyAlignUnit({@required this.align, this.child, this.children})
+  FLDyAlignUnit({required this.align, this.child, this.children})
       : assert(align != null);
 
   final FLDyUnitAlign align;
-  final Widget child;
-  final List<Widget> children;
+  final Widget? child;
+  final List<Widget>? children;
 
   MainAxisSize resolveMainAxisSize(String size) {
     switch (size) {
@@ -105,11 +104,11 @@ class FLDyAlignUnit extends FLDyBaseUnit {
       case "max":
         return MainAxisSize.max;
       default:
-        return null;
+        return MainAxisSize.max;
     }
   }
 
-  MainAxisAlignment resolveMainAlignment(String alignment) {
+  MainAxisAlignment? resolveMainAlignment(String? alignment) {
     switch (alignment) {
       case "start":
         return MainAxisAlignment.start;
@@ -128,7 +127,7 @@ class FLDyAlignUnit extends FLDyBaseUnit {
     }
   }
 
-  CrossAxisAlignment resolveCrossAlignment(String alignment) {
+  CrossAxisAlignment? resolveCrossAlignment(String? alignment) {
     switch (alignment) {
       case "start":
         return CrossAxisAlignment.start;
@@ -155,38 +154,38 @@ class FLDyAlignUnit extends FLDyBaseUnit {
     }
 
     final MainAxisSize mainAxisSize = align.mainAxisSize != null
-        ? resolveMainAxisSize(align.mainAxisSize)
+        ? resolveMainAxisSize(align.mainAxisSize!)
         : MainAxisSize.max;
-    final MainAxisAlignment mainAxisAlignment = align.mainAxisAlignment != null
+    final MainAxisAlignment? mainAxisAlignment = align.mainAxisAlignment != null
         ? resolveMainAlignment(align.mainAxisAlignment)
         : MainAxisAlignment.start;
-    final CrossAxisAlignment crossAxisAlignment =
+    final CrossAxisAlignment? crossAxisAlignment =
         align.crossAxisAlignment != null
             ? resolveCrossAlignment(align.crossAxisAlignment)
             : CrossAxisAlignment.center;
     if (align.type == FLDyAlignType.row) {
       return Row(
         mainAxisSize: mainAxisSize,
-        mainAxisAlignment: mainAxisAlignment,
-        crossAxisAlignment: crossAxisAlignment,
-        children: children,
+        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
+        children: children!,
       );
     } else if (align.type == FLDyAlignType.column) {
       return Column(
         mainAxisSize: mainAxisSize,
-        mainAxisAlignment: mainAxisAlignment,
-        crossAxisAlignment: crossAxisAlignment,
-        children: children,
+        mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.start,
+        crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
+        children: children!,
       );
     } else if (align.type == FLDyAlignType.align) {
       return Align(
         alignment: align.getAlignment() ?? Alignment.center,
         widthFactor: align.widthFactor,
         heightFactor: align.heightFactor,
-        child: child,
+        child: child!,
       );
     }
 
-    return null;
+    return Container();
   }
 }

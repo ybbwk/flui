@@ -12,7 +12,7 @@ part 'unit_model.g.dart';
 /// rendering information, bound events and bound data.
 class FLDyUnitModel {
   FLDyUnitModel(
-      {this.uniqueId,
+      {required this.uniqueId,
       this.unitName,
       this.flex,
       this.align,
@@ -21,12 +21,12 @@ class FLDyUnitModel {
       this.children});
 
   final String uniqueId;
-  final String unitName;
-  final String flex;
-  final FLDyUnitAlign align;
-  final FLDyUnitPositioned positioned;
-  final FLDyUnitModel child;
-  final List<FLDyUnitModel> children;
+  final String? unitName;
+  final String? flex;
+  final FLDyUnitAlign? align;
+  final FLDyUnitPositioned? positioned;
+  final FLDyUnitModel? child;
+  final List<FLDyUnitModel>? children;
 
   factory FLDyUnitModel.fromJson(Map<String, dynamic> json) {
     final String unitName = json['unitName'];
@@ -68,16 +68,16 @@ class FLDyUnitModel {
 /// Container
 class FLDyContainerUnitModel extends FLDyUnitModel {
   FLDyContainerUnitModel({
-    String uniqueId,
-    String unitName,
-    FLDyUnitModel child,
-    List<FLDyUnitModel> children,
-    String flex,
+    required String uniqueId,
+    String? unitName,
+    FLDyUnitModel? child,
+    List<FLDyUnitModel>? children,
+    String? flex,
     this.width,
     this.height,
     this.color,
-    FLDyUnitAlign align,
-    FLDyUnitPositioned positioned,
+    FLDyUnitAlign? align,
+    FLDyUnitPositioned? positioned,
     this.padding,
     this.margin,
     this.decoration,
@@ -92,16 +92,16 @@ class FLDyContainerUnitModel extends FLDyUnitModel {
             align: align,
             positioned: positioned);
 
-  final double width;
-  final double height;
-  final String color;
-  final FLDyUnitEdgeInsets padding;
-  final FLDyUnitEdgeInsets margin;
+  final double? width;
+  final double? height;
+  final String? color;
+  final FLDyUnitEdgeInsets? padding;
+  final FLDyUnitEdgeInsets? margin;
 
   /// only support box decoration
-  final FLDyUnitBoxDecoration decoration;
-  final FLDyUnitBoxDecoration foregroundDecoration;
-  final FLDyUnitBoxConstraints constraints;
+  final FLDyUnitBoxDecoration? decoration;
+  final FLDyUnitBoxDecoration? foregroundDecoration;
+  final FLDyUnitBoxConstraints? constraints;
 
   factory FLDyContainerUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyContainerUnitModelFromJson(json);
@@ -113,11 +113,11 @@ class FLDyContainerUnitModel extends FLDyUnitModel {
 /// SafeArea
 class FLDySafeAreaUnitModel extends FLDyUnitModel {
   FLDySafeAreaUnitModel(
-      {String uniqueId,
-      String unitName,
-      FLDyUnitModel child,
-      List<FLDyUnitModel> children,
-      FLDyUnitAlign align,
+      {required String uniqueId,
+      String? unitName,
+      FLDyUnitModel? child,
+      List<FLDyUnitModel>? children,
+      FLDyUnitAlign? align,
       this.left,
       this.top,
       this.right,
@@ -131,12 +131,12 @@ class FLDySafeAreaUnitModel extends FLDyUnitModel {
             children: children,
             align: align);
 
-  final bool left;
-  final bool top;
-  final bool right;
-  final bool bottom;
-  final FLDyUnitEdgeInsets minimum;
-  final bool maintainBottomViewPadding;
+  final bool? left;
+  final bool? top;
+  final bool? right;
+  final bool? bottom;
+  final FLDyUnitEdgeInsets? minimum;
+  final bool? maintainBottomViewPadding;
 
   factory FLDySafeAreaUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDySafeAreaUnitModelFromJson(json);
@@ -148,10 +148,10 @@ class FLDySafeAreaUnitModel extends FLDyUnitModel {
 /// StackView
 class FLDyStackUnitModel extends FLDyUnitModel {
   FLDyStackUnitModel(
-      {String uniqueId,
-      String unitName,
-      FLDyUnitPositioned positioned,
-      List<FLDyUnitModel> children,
+      {required String uniqueId,
+      String? unitName,
+      FLDyUnitPositioned? positioned,
+      List<FLDyUnitModel>? children,
       this.alignment,
       this.fit,
       this.textDirection,
@@ -163,20 +163,20 @@ class FLDyStackUnitModel extends FLDyUnitModel {
           children: children,
         );
 
-  final String alignment;
-  final String textDirection;
-  final String fit;
-  final String overflow;
+  final String? alignment;
+  final String? textDirection;
+  final String? fit;
+  final String? overflow;
 
   factory FLDyStackUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyStackUnitModelFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyStackUnitModelToJson(this);
 
-  AlignmentDirectional getAlignment() =>
+  AlignmentDirectional? getAlignment() =>
       flStringToAlignmentDirectional(alignment);
-  TextDirection getTextDirection() => flStringToTextDirection(textDirection);
-  StackFit getStackFit() => flStringToStackFit(fit);
-  Overflow getOverflow() => flStringToOverflow(overflow);
+  TextDirection? getTextDirection() => flStringToTextDirection(textDirection);
+  StackFit? getStackFit() => flStringToStackFit(fit);
+  Overflow? getOverflow() => flStringToOverflow(overflow);
 }
 
 @JsonSerializable()
@@ -184,10 +184,10 @@ class FLDyStackUnitModel extends FLDyUnitModel {
 /// ListView
 class FLDyListViewUnitModel extends FLDyUnitModel {
   FLDyListViewUnitModel({
-    String uniqueId,
-    String unitName,
-    List<FLDyUnitModel> children,
-    FLDyUnitPositioned positioned,
+    required String uniqueId,
+    String? unitName,
+    List<FLDyUnitModel>? children,
+    FLDyUnitPositioned? positioned,
     this.scrollDirection,
     this.reverse,
     this.primary,
@@ -207,19 +207,19 @@ class FLDyListViewUnitModel extends FLDyUnitModel {
             children: children,
             positioned: positioned);
 
-  final String scrollDirection;
-  final bool reverse;
-  final bool primary;
-  final FLDyUnitScrollPhysics scrollPhysics;
-  final bool shrinkWrap;
-  final FLDyUnitEdgeInsets padding;
-  final double itemExtent;
-  final bool addAutomaticKeepAlives;
-  final bool addRepaintBoundaries;
-  final bool addSemanticIndexes;
-  final double cacheExtent;
-  final int semanticChildCount;
-  final FLDyUnitDivider separatedDivider;
+  final String? scrollDirection;
+  final bool? reverse;
+  final bool? primary;
+  final FLDyUnitScrollPhysics? scrollPhysics;
+  final bool? shrinkWrap;
+  final FLDyUnitEdgeInsets? padding;
+  final double? itemExtent;
+  final bool? addAutomaticKeepAlives;
+  final bool? addRepaintBoundaries;
+  final bool? addSemanticIndexes;
+  final double? cacheExtent;
+  final int? semanticChildCount;
+  final FLDyUnitDivider? separatedDivider;
 
   factory FLDyListViewUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyListViewUnitModelFromJson(json);
@@ -235,9 +235,9 @@ class FLDyListViewUnitModel extends FLDyUnitModel {
 /// ListTile
 class FLDyListTileUnitModel extends FLDyUnitModel {
   FLDyListTileUnitModel(
-      {String uniqueId,
-      String unitName,
-      FLDyUnitPositioned positioned,
+      {required String uniqueId,
+      String? unitName,
+      FLDyUnitPositioned? positioned,
       this.leading,
       this.title,
       this.subtitle,
@@ -253,15 +253,15 @@ class FLDyListTileUnitModel extends FLDyUnitModel {
           positioned: positioned,
         );
 
-  final FLDyUnitModel leading;
-  final FLDyUnitModel title;
-  final FLDyUnitModel subtitle;
-  final FLDyUnitModel trailing;
-  final bool isThreeLine;
-  final bool dense;
-  final FLDyUnitEdgeInsets contentPadding;
-  final bool enabled;
-  final bool selected;
+  final FLDyUnitModel? leading;
+  final FLDyUnitModel? title;
+  final FLDyUnitModel? subtitle;
+  final FLDyUnitModel? trailing;
+  final bool? isThreeLine;
+  final bool? dense;
+  final FLDyUnitEdgeInsets? contentPadding;
+  final bool? enabled;
+  final bool? selected;
 
   factory FLDyListTileUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyListTileUnitModelFromJson(json);
@@ -273,13 +273,13 @@ class FLDyListTileUnitModel extends FLDyUnitModel {
 /// InkWell
 class FLDyInkWellUnitModel extends FLDyUnitModel {
   FLDyInkWellUnitModel({
-    String uniqueId,
-    String unitName,
-    FLDyUnitAlign align,
-    String flex,
-    FLDyUnitPositioned positioned,
-    FLDyUnitModel child,
-    List<FLDyUnitModel> children,
+    required String uniqueId,
+    String? unitName,
+    FLDyUnitAlign? align,
+    String? flex,
+    FLDyUnitPositioned? positioned,
+    FLDyUnitModel? child,
+    List<FLDyUnitModel>? children,
     this.onTap,
     this.onDoubleTap,
     this.onLongPress,
@@ -297,13 +297,13 @@ class FLDyInkWellUnitModel extends FLDyUnitModel {
           children: children,
         );
 
-  final FLDyAction onTap;
-  final FLDyAction onDoubleTap;
-  final FLDyAction onLongPress;
-  final String focusColor;
-  final String hoverColor;
-  final String highlightColor;
-  final String splashColor;
+  final FLDyAction? onTap;
+  final FLDyAction? onDoubleTap;
+  final FLDyAction? onLongPress;
+  final String? focusColor;
+  final String? hoverColor;
+  final String? highlightColor;
+  final String? splashColor;
 
   factory FLDyInkWellUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyInkWellUnitModelFromJson(json);
@@ -315,13 +315,15 @@ class FLDyInkWellUnitModel extends FLDyUnitModel {
 /// SizedBox
 class FLDySizedBoxUnitModel extends FLDyUnitModel {
   FLDySizedBoxUnitModel({
-    String unitName,
+    String? unitName,
     this.width,
     this.height,
-  }) : super(unitName: unitName);
+  }) : super(
+            uniqueId: DateTime.now().millisecondsSinceEpoch.toString(),
+            unitName: unitName);
 
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
 
   factory FLDySizedBoxUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDySizedBoxUnitModelFromJson(json);
@@ -334,9 +336,9 @@ class FLDySizedBoxUnitModel extends FLDyUnitModel {
 class FLDyTextUnitModel extends FLDyUnitModel {
   FLDyTextUnitModel(
     this.text, {
-    String uniqueId,
-    String unitName,
-    FLDyUnitPositioned positioned,
+    required String uniqueId,
+    String? unitName,
+    FLDyUnitPositioned? positioned,
     this.textStyle,
     this.textAlign,
     this.textDirection,
@@ -353,24 +355,24 @@ class FLDyTextUnitModel extends FLDyUnitModel {
         );
 
   final String text;
-  final FLDyUnitTextStyle textStyle;
-  final String textAlign;
-  final String textDirection;
-  final bool softWrap;
-  final String textOverflow;
-  final double textScaleFactor;
-  final int maxLines;
-  final String semanticsLabel;
-  final String textWidthBasis;
+  final FLDyUnitTextStyle? textStyle;
+  final String? textAlign;
+  final String? textDirection;
+  final bool? softWrap;
+  final String? textOverflow;
+  final double? textScaleFactor;
+  final int? maxLines;
+  final String? semanticsLabel;
+  final String? textWidthBasis;
 
   factory FLDyTextUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyTextUnitModelFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyTextUnitModelToJson(this);
 
-  TextAlign getTextAlign() => flStringToTextAlign(textAlign);
-  TextDirection getTextDirection() => flStringToTextDirection(textDirection);
-  TextOverflow getTextOverflow() => flStringToTextOverflow(textOverflow);
-  TextWidthBasis getTextWidthBasis() =>
+  TextAlign? getTextAlign() => flStringToTextAlign(textAlign);
+  TextDirection? getTextDirection() => flStringToTextDirection(textDirection);
+  TextOverflow? getTextOverflow() => flStringToTextOverflow(textOverflow);
+  TextWidthBasis? getTextWidthBasis() =>
       flStringToTextWidthBasis(textWidthBasis);
 }
 
@@ -379,9 +381,9 @@ class FLDyTextUnitModel extends FLDyUnitModel {
 /// RichText
 class FLDyRichTextUnitModel extends FLDyUnitModel {
   FLDyRichTextUnitModel({
-    String uniqueId,
-    String unitName,
-    FLDyUnitPositioned positioned,
+    required String uniqueId,
+    String? unitName,
+    FLDyUnitPositioned? positioned,
     this.text,
     this.textAlign,
     this.textDirection,
@@ -397,24 +399,24 @@ class FLDyRichTextUnitModel extends FLDyUnitModel {
           positioned: positioned,
         );
 
-  final FLDyTextSpanUnitModel text;
-  final String textAlign;
-  final String textDirection;
-  final bool softWrap;
-  final String textOverflow;
-  final double textScaleFactor;
-  final int maxLines;
-  final String semanticsLabel;
-  final String textWidthBasis;
+  final FLDyTextSpanUnitModel? text;
+  final String? textAlign;
+  final String? textDirection;
+  final bool? softWrap;
+  final String? textOverflow;
+  final double? textScaleFactor;
+  final int? maxLines;
+  final String? semanticsLabel;
+  final String? textWidthBasis;
 
   factory FLDyRichTextUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyRichTextUnitModelFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyRichTextUnitModelToJson(this);
 
-  TextAlign getTextAlign() => flStringToTextAlign(textAlign);
-  TextDirection getTextDirection() => flStringToTextDirection(textDirection);
-  TextOverflow getTextOverflow() => flStringToTextOverflow(textOverflow);
-  TextWidthBasis getTextWidthBasis() =>
+  TextAlign? getTextAlign() => flStringToTextAlign(textAlign);
+  TextDirection? getTextDirection() => flStringToTextDirection(textDirection);
+  TextOverflow? getTextOverflow() => flStringToTextOverflow(textOverflow);
+  TextWidthBasis? getTextWidthBasis() =>
       flStringToTextWidthBasis(textWidthBasis);
 }
 
@@ -423,8 +425,8 @@ class FLDyRichTextUnitModel extends FLDyUnitModel {
 /// TextSpan
 class FLDyTextSpanUnitModel extends FLDyUnitModel {
   FLDyTextSpanUnitModel(
-      {String uniqueId,
-      List<FLDyTextSpanUnitModel> children,
+      {required String uniqueId,
+      List<FLDyTextSpanUnitModel>? children,
       this.text,
       this.textStyle,
       this.gesture,
@@ -434,10 +436,10 @@ class FLDyTextSpanUnitModel extends FLDyUnitModel {
           children: children,
         );
 
-  final String text;
-  final FLDyUnitTextStyle textStyle;
-  final FLDyGestureRecognizer gesture;
-  final String semanticsLabel;
+  final String? text;
+  final FLDyUnitTextStyle? textStyle;
+  final FLDyGestureRecognizer? gesture;
+  final String? semanticsLabel;
 
   factory FLDyTextSpanUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyTextSpanUnitModelFromJson(json);
@@ -449,11 +451,11 @@ class FLDyTextSpanUnitModel extends FLDyUnitModel {
 /// Image
 class FLDyImageUnitModel extends FLDyUnitModel {
   FLDyImageUnitModel(
-      {String uniqueId,
-      String unitName,
-      FLDyUnitPositioned positioned,
-      String flex,
-      @required this.imageProvider,
+      {required String uniqueId,
+      String? unitName,
+      FLDyUnitPositioned? positioned,
+      String? flex,
+      required this.imageProvider,
       this.loading,
       this.width,
       this.height,
@@ -470,23 +472,23 @@ class FLDyImageUnitModel extends FLDyUnitModel {
             flex: flex);
 
   final FLDyUnitImageProvider imageProvider;
-  final FLDyUnitModel loading;
-  final double width;
-  final double height;
-  final String color;
-  final String fit;
-  final String alignment;
-  final String imageRepeat;
-  final String semanticLabel;
-  final bool excludeFromSemantics;
+  final FLDyUnitModel? loading;
+  final double? width;
+  final double? height;
+  final String? color;
+  final String? fit;
+  final String? alignment;
+  final String? imageRepeat;
+  final String? semanticLabel;
+  final bool? excludeFromSemantics;
 
   factory FLDyImageUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyImageUnitModelFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyImageUnitModelToJson(this);
 
-  BoxFit getBoxFit() => flStringToBoxFit(fit);
-  Alignment getAlignment() => flStringtoAlignment(alignment);
-  ImageRepeat getImageRepeat() => flStringToImageRepeat(imageRepeat);
+  BoxFit? getBoxFit() => flStringToBoxFit(fit);
+  Alignment? getAlignment() => flStringtoAlignment(alignment);
+  ImageRepeat? getImageRepeat() => flStringToImageRepeat(imageRepeat);
 }
 
 @JsonSerializable()
@@ -495,9 +497,9 @@ class FLDyImageUnitModel extends FLDyUnitModel {
 class FLDyIconUnitModel extends FLDyUnitModel {
   FLDyIconUnitModel(
     this.icon, {
-    String uniqueId,
-    String unitName,
-    FLDyUnitPositioned positioned,
+    required String uniqueId,
+    String? unitName,
+    FLDyUnitPositioned? positioned,
     this.size,
     this.color,
     this.semanticLabel,
@@ -509,16 +511,16 @@ class FLDyIconUnitModel extends FLDyUnitModel {
         );
 
   final FLDyUnitIconData icon;
-  final double size;
-  final String color;
-  final String semanticLabel;
-  final String textDirection;
+  final double? size;
+  final String? color;
+  final String? semanticLabel;
+  final String? textDirection;
 
   factory FLDyIconUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyIconUnitModelFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyIconUnitModelToJson(this);
 
-  TextDirection getTextDirection() => flStringToTextDirection(textDirection);
+  TextDirection? getTextDirection() => flStringToTextDirection(textDirection);
 }
 
 @JsonSerializable()
@@ -526,14 +528,14 @@ class FLDyIconUnitModel extends FLDyUnitModel {
 /// RaisedButton
 class FLDyRaisedButtonUnitModel extends FLDyUnitModel {
   FLDyRaisedButtonUnitModel(
-      {String uniqueId,
-      String unitName,
-      FLDyUnitPositioned positioned,
-      FLDyUnitAlign align,
-      String flex,
-      FLDyUnitModel child,
-      List<FLDyUnitModel> children,
-      @required this.onPressed,
+      {required String uniqueId,
+      String? unitName,
+      FLDyUnitPositioned? positioned,
+      FLDyUnitAlign? align,
+      String? flex,
+      FLDyUnitModel? child,
+      List<FLDyUnitModel>? children,
+      required this.onPressed,
       this.onLongPress,
       this.textColor,
       this.color,
@@ -548,10 +550,10 @@ class FLDyRaisedButtonUnitModel extends FLDyUnitModel {
             children: children);
 
   final FLDyAction onPressed;
-  final FLDyAction onLongPress;
-  final String textColor;
-  final String color;
-  final FLDyUnitEdgeInsets padding;
+  final FLDyAction? onLongPress;
+  final String? textColor;
+  final String? color;
+  final FLDyUnitEdgeInsets? padding;
 
   factory FLDyRaisedButtonUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyRaisedButtonUnitModelFromJson(json);
@@ -563,14 +565,14 @@ class FLDyRaisedButtonUnitModel extends FLDyUnitModel {
 /// RaisedButton
 class FLDyFlatButtonUnitModel extends FLDyUnitModel {
   FLDyFlatButtonUnitModel(
-      {String uniqueId,
-      String unitName,
-      FLDyUnitPositioned positioned,
-      FLDyUnitAlign align,
-      String flex,
-      FLDyUnitModel child,
-      List<FLDyUnitModel> children,
-      @required this.onPressed,
+      {required String uniqueId,
+      String? unitName,
+      FLDyUnitPositioned? positioned,
+      FLDyUnitAlign? align,
+      String? flex,
+      FLDyUnitModel? child,
+      List<FLDyUnitModel>? children,
+      required this.onPressed,
       this.onLongPress,
       this.textColor,
       this.color,
@@ -585,10 +587,10 @@ class FLDyFlatButtonUnitModel extends FLDyUnitModel {
             children: children);
 
   final FLDyAction onPressed;
-  final FLDyAction onLongPress;
-  final String textColor;
-  final String color;
-  final FLDyUnitEdgeInsets padding;
+  final FLDyAction? onLongPress;
+  final String? textColor;
+  final String? color;
+  final FLDyUnitEdgeInsets? padding;
 
   factory FLDyFlatButtonUnitModel.fromJson(Map<String, dynamic> json) =>
       _$FLDyFlatButtonUnitModelFromJson(json);
@@ -605,7 +607,7 @@ class FLDyUnitIconData {
   final int codePoint;
   final String fontFamily;
   final String fontPackage;
-  final bool matchTextDirection;
+  final bool? matchTextDirection;
 
   factory FLDyUnitIconData.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitIconDataFromJson(json);
@@ -641,8 +643,8 @@ class FLDyUnitTextStyle {
       this.decorationStyle,
       this.decorationThickness);
 
-  final String themeStyle;
-  final bool inherit;
+  final String? themeStyle;
+  final bool? inherit;
   final String color;
   final String backgroundColor;
   final String fontFamily;
@@ -653,7 +655,7 @@ class FLDyUnitTextStyle {
   final double wordSpacing;
   final String textBaseline;
   final double height;
-  final List<String> textDecorations;
+  final List<String>? textDecorations;
   final String decorationColor;
   final String decorationStyle;
   final double decorationThickness;
@@ -662,12 +664,12 @@ class FLDyUnitTextStyle {
       _$FLDyUnitTextStyleFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyUnitTextStyleToJson(this);
 
-  TextStyle toTextStyle(BuildContext context) {
+  TextStyle? toTextStyle(BuildContext context) {
     if (themeStyle != null)
-      return FLThemeTool.parseTextStyle(themeStyle, context);
+      return FLThemeTool.parseTextStyle(themeStyle!, context);
 
-    final TextDecoration textDecoration = textDecorations != null
-        ? TextDecoration.combine(textDecorations.map((decStr) {
+    final TextDecoration? textDecoration = textDecorations != null
+        ? TextDecoration.combine(textDecorations!.map((decStr) {
             return flStringToTextDecoration(decStr);
           }).toList())
         : null;
@@ -728,7 +730,7 @@ class FLDyUnitScrollPhysics {
       _$FLDyUnitScrollPhysicsFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyUnitScrollPhysicsToJson(this);
 
-  ScrollPhysics toScrollPhysics() {
+  ScrollPhysics? toScrollPhysics() {
     switch (type) {
       case FLDyScrollPhysicsType.bouncing:
         return BouncingScrollPhysics();
@@ -750,11 +752,11 @@ class FLDyUnitScrollPhysics {
 class FLDyUnitEdgeInsets {
   FLDyUnitEdgeInsets(this.left, this.top, this.right, this.bottom, this.all);
 
-  final double top;
-  final double left;
-  final double bottom;
-  final double right;
-  final double all;
+  final double? top;
+  final double? left;
+  final double? bottom;
+  final double? right;
+  final double? all;
 
   factory FLDyUnitEdgeInsets.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitEdgeInsetsFromJson(json);
@@ -762,7 +764,7 @@ class FLDyUnitEdgeInsets {
 
   EdgeInsets toEdgeInsets() {
     if (all != null)
-      return EdgeInsets.all(all);
+      return EdgeInsets.all(all!);
     else
       return EdgeInsets.fromLTRB(left ?? 0, top ?? 0, right ?? 0, bottom ?? 0);
   }
@@ -783,7 +785,7 @@ class FLDyUnitImageProvider {
 
   /// asset image use
   final String assetName;
-  final double scale;
+  final double? scale;
 
   factory FLDyUnitImageProvider.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitImageProviderFromJson(json);
@@ -812,10 +814,10 @@ class FLDyUnitDecorationImage {
   DecorationImage toDecorationImage() => DecorationImage(
       image: (imageProvider.type == FLDyImageType.network
           ? imageProvider.toNetworkImage()
-          : imageProvider.toAssetImage()),
+          : imageProvider.toAssetImage()) as ImageProvider,
       fit: flStringToBoxFit(fit),
       alignment: flStringtoAlignment(alignment) ?? Alignment.center,
-      repeat: flStringToImageRepeat(imageRepeat));
+      repeat: flStringToImageRepeat(imageRepeat) ?? ImageRepeat.noRepeat);
 }
 
 @JsonSerializable()
@@ -823,20 +825,20 @@ class FLDyUnitBoxConstraints {
   FLDyUnitBoxConstraints(
       this.minWidth, this.maxWidth, this.minHeight, this.maxHeight);
 
-  final double minWidth;
-  final double maxWidth;
-  final double minHeight;
-  final double maxHeight;
+  final double? minWidth;
+  final double? maxWidth;
+  final double? minHeight;
+  final double? maxHeight;
 
   factory FLDyUnitBoxConstraints.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitBoxConstraintsFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyUnitBoxConstraintsToJson(this);
 
   BoxConstraints toBoxConstraints() => BoxConstraints(
-      minWidth: minWidth,
-      maxWidth: maxWidth,
-      minHeight: minHeight,
-      maxHeight: maxHeight);
+      minWidth: minWidth ?? 0.0,
+      maxWidth: maxWidth ?? double.infinity,
+      minHeight: minHeight ?? 0.0,
+      maxHeight: maxHeight ?? double.infinity);
 }
 
 @JsonSerializable()
@@ -846,12 +848,12 @@ class FLDyUnitBoxDecoration {
   FLDyUnitBoxDecoration(this.color, this.image, this.border, this.borderRadius,
       this.boxShadow, this.shape);
 
-  final String color;
-  final FLDyUnitDecorationImage image;
-  final FLDyUnitBorder border;
-  final FLDyUnitBorderRadius borderRadius;
-  final List<FLDyUnitBoxShadow> boxShadow;
-  final String shape;
+  final String? color;
+  final FLDyUnitDecorationImage? image;
+  final FLDyUnitBorder? border;
+  final FLDyUnitBorderRadius? borderRadius;
+  final List<FLDyUnitBoxShadow>? boxShadow;
+  final String? shape;
 
   factory FLDyUnitBoxDecoration.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitBoxDecorationFromJson(json);
@@ -863,7 +865,7 @@ class FLDyUnitBoxDecoration {
       border: border?.toBorder(context),
       borderRadius: borderRadius?.toBorderRadius(),
       boxShadow: boxShadow != null
-          ? boxShadow
+          ? boxShadow!
               .map((FLDyUnitBoxShadow shadow) => shadow.toBoxShadow(context))
               .toList()
           : null,
@@ -877,10 +879,10 @@ class FLDyUnitBoxShadow {
   FLDyUnitBoxShadow(
       this.color, this.offset, this.blurRadius, this.spreadRadius);
 
-  final String color;
-  final FLDyUnitOffset offset;
-  final double blurRadius;
-  final double spreadRadius;
+  final String? color;
+  final FLDyUnitOffset? offset;
+  final double? blurRadius;
+  final double? spreadRadius;
 
   factory FLDyUnitBoxShadow.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitBoxShadowFromJson(json);
@@ -890,7 +892,7 @@ class FLDyUnitBoxShadow {
     final shadowColor = FLThemeTool.parseColor(color, context);
     return BoxShadow(
       color: shadowColor ?? const Color(0xFF000000),
-      offset: offset?.toOffset(),
+      offset: offset?.toOffset() ?? Offset.zero,
       blurRadius: blurRadius ?? 0.0,
       spreadRadius: spreadRadius ?? 0.0,
     );
@@ -903,14 +905,14 @@ class FLDyUnitBoxShadow {
 class FLDyUnitOffset {
   FLDyUnitOffset(this.dx, this.dy);
 
-  final double dx;
-  final double dy;
+  final double? dx;
+  final double? dy;
 
   factory FLDyUnitOffset.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitOffsetFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyUnitOffsetToJson(this);
 
-  Offset toOffset() => Offset(dx, dy);
+  Offset toOffset() => Offset(dx ?? 0, dy ?? 0);
 }
 
 @JsonSerializable()
@@ -920,13 +922,13 @@ class FLDyUnitBorderRadius {
   FLDyUnitBorderRadius(this.radius);
 
   /// all radius value
-  final double radius;
+  final double? radius;
 
   factory FLDyUnitBorderRadius.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitBorderRadiusFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyUnitBorderRadiusToJson(this);
 
-  BorderRadius toBorderRadius() => BorderRadius.circular(radius);
+  BorderRadius toBorderRadius() => BorderRadius.circular(radius ?? 0);
 }
 
 @JsonSerializable()
@@ -935,9 +937,9 @@ class FLDyUnitBorderRadius {
 class FLDyUnitBorder {
   FLDyUnitBorder(this.color, this.width, this.style);
 
-  final String color;
-  final double width;
-  final String style;
+  final String? color;
+  final double? width;
+  final String? style;
 
   factory FLDyUnitBorder.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitBorderFromJson(json);
@@ -962,19 +964,19 @@ class FLDyUnitAlign {
       this.widthFactor,
       this.heightFactor);
 
-  final String type;
-  final String mainAxisSize;
-  final String mainAxisAlignment;
-  final String crossAxisAlignment;
-  final String alignment;
-  final double widthFactor;
-  final double heightFactor;
+  final String? type;
+  final String? mainAxisSize;
+  final String? mainAxisAlignment;
+  final String? crossAxisAlignment;
+  final String? alignment;
+  final double? widthFactor;
+  final double? heightFactor;
 
   factory FLDyUnitAlign.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitAlignFromJson(json);
   Map<String, dynamic> toJson() => _$FLDyUnitAlignToJson(this);
 
-  Alignment getAlignment() => flStringtoAlignment(alignment);
+  Alignment? getAlignment() => flStringtoAlignment(alignment);
 }
 
 @JsonSerializable()
@@ -984,12 +986,12 @@ class FLDyUnitPositioned {
   FLDyUnitPositioned(
       this.left, this.top, this.right, this.bottom, this.width, this.height);
 
-  final double left;
-  final double top;
-  final double right;
-  final double bottom;
-  final double width;
-  final double height;
+  final double? left;
+  final double? top;
+  final double? right;
+  final double? bottom;
+  final double? width;
+  final double? height;
 
   factory FLDyUnitPositioned.fromJson(Map<String, dynamic> json) =>
       _$FLDyUnitPositionedFromJson(json);

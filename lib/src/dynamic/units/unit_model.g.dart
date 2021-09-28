@@ -6,28 +6,25 @@ part of 'unit_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-FLDyUnitModel _$FLDyUnitModelFromJson(Map<String, dynamic> json) {
-  return FLDyUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    flex: json['flex'] as String,
-    align: json['align'] == null
-        ? null
-        : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    child: json['child'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
-    children: (json['children'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FLDyUnitModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-  );
-}
+FLDyUnitModel _$FLDyUnitModelFromJson(Map<String, dynamic> json) =>
+    FLDyUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      flex: json['flex'] as String?,
+      align: json['align'] == null
+          ? null
+          : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      child: json['child'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => FLDyUnitModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
 
 Map<String, dynamic> _$FLDyUnitModelToJson(FLDyUnitModel instance) =>
     <String, dynamic>{
@@ -41,49 +38,47 @@ Map<String, dynamic> _$FLDyUnitModelToJson(FLDyUnitModel instance) =>
     };
 
 FLDyContainerUnitModel _$FLDyContainerUnitModelFromJson(
-    Map<String, dynamic> json) {
-  return FLDyContainerUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    child: json['child'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
-    children: (json['children'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FLDyUnitModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    flex: json['flex'] as String,
-    width: (json['width'] as num)?.toDouble(),
-    height: (json['height'] as num)?.toDouble(),
-    color: json['color'] as String,
-    align: json['align'] == null
-        ? null
-        : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    padding: json['padding'] == null
-        ? null
-        : FLDyUnitEdgeInsets.fromJson(json['padding'] as Map<String, dynamic>),
-    margin: json['margin'] == null
-        ? null
-        : FLDyUnitEdgeInsets.fromJson(json['margin'] as Map<String, dynamic>),
-    decoration: json['decoration'] == null
-        ? null
-        : FLDyUnitBoxDecoration.fromJson(
-            json['decoration'] as Map<String, dynamic>),
-    foregroundDecoration: json['foregroundDecoration'] == null
-        ? null
-        : FLDyUnitBoxDecoration.fromJson(
-            json['foregroundDecoration'] as Map<String, dynamic>),
-    constraints: json['constraints'] == null
-        ? null
-        : FLDyUnitBoxConstraints.fromJson(
-            json['constraints'] as Map<String, dynamic>),
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyContainerUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      child: json['child'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => FLDyUnitModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      flex: json['flex'] as String?,
+      width: (json['width'] as num?)?.toDouble(),
+      height: (json['height'] as num?)?.toDouble(),
+      color: json['color'] as String?,
+      align: json['align'] == null
+          ? null
+          : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      padding: json['padding'] == null
+          ? null
+          : FLDyUnitEdgeInsets.fromJson(
+              json['padding'] as Map<String, dynamic>),
+      margin: json['margin'] == null
+          ? null
+          : FLDyUnitEdgeInsets.fromJson(json['margin'] as Map<String, dynamic>),
+      decoration: json['decoration'] == null
+          ? null
+          : FLDyUnitBoxDecoration.fromJson(
+              json['decoration'] as Map<String, dynamic>),
+      foregroundDecoration: json['foregroundDecoration'] == null
+          ? null
+          : FLDyUnitBoxDecoration.fromJson(
+              json['foregroundDecoration'] as Map<String, dynamic>),
+      constraints: json['constraints'] == null
+          ? null
+          : FLDyUnitBoxConstraints.fromJson(
+              json['constraints'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$FLDyContainerUnitModelToJson(
         FLDyContainerUnitModel instance) =>
@@ -106,31 +101,29 @@ Map<String, dynamic> _$FLDyContainerUnitModelToJson(
     };
 
 FLDySafeAreaUnitModel _$FLDySafeAreaUnitModelFromJson(
-    Map<String, dynamic> json) {
-  return FLDySafeAreaUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    child: json['child'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
-    children: (json['children'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FLDyUnitModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    align: json['align'] == null
-        ? null
-        : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
-    left: json['left'] as bool,
-    top: json['top'] as bool,
-    right: json['right'] as bool,
-    bottom: json['bottom'] as bool,
-    minimum: json['minimum'] == null
-        ? null
-        : FLDyUnitEdgeInsets.fromJson(json['minimum'] as Map<String, dynamic>),
-    maintainBottomViewPadding: json['maintainBottomViewPadding'] as bool,
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDySafeAreaUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      child: json['child'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => FLDyUnitModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      align: json['align'] == null
+          ? null
+          : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
+      left: json['left'] as bool?,
+      top: json['top'] as bool?,
+      right: json['right'] as bool?,
+      bottom: json['bottom'] as bool?,
+      minimum: json['minimum'] == null
+          ? null
+          : FLDyUnitEdgeInsets.fromJson(
+              json['minimum'] as Map<String, dynamic>),
+      maintainBottomViewPadding: json['maintainBottomViewPadding'] as bool?,
+    );
 
 Map<String, dynamic> _$FLDySafeAreaUnitModelToJson(
         FLDySafeAreaUnitModel instance) =>
@@ -148,25 +141,22 @@ Map<String, dynamic> _$FLDySafeAreaUnitModelToJson(
       'maintainBottomViewPadding': instance.maintainBottomViewPadding,
     };
 
-FLDyStackUnitModel _$FLDyStackUnitModelFromJson(Map<String, dynamic> json) {
-  return FLDyStackUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    children: (json['children'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FLDyUnitModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    alignment: json['alignment'] as String,
-    fit: json['fit'] as String,
-    textDirection: json['textDirection'] as String,
-    overflow: json['overflow'] as String,
-  );
-}
+FLDyStackUnitModel _$FLDyStackUnitModelFromJson(Map<String, dynamic> json) =>
+    FLDyStackUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => FLDyUnitModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      alignment: json['alignment'] as String?,
+      fit: json['fit'] as String?,
+      textDirection: json['textDirection'] as String?,
+      overflow: json['overflow'] as String?,
+    );
 
 Map<String, dynamic> _$FLDyStackUnitModelToJson(FLDyStackUnitModel instance) =>
     <String, dynamic>{
@@ -181,42 +171,40 @@ Map<String, dynamic> _$FLDyStackUnitModelToJson(FLDyStackUnitModel instance) =>
     };
 
 FLDyListViewUnitModel _$FLDyListViewUnitModelFromJson(
-    Map<String, dynamic> json) {
-  return FLDyListViewUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    children: (json['children'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FLDyUnitModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    scrollDirection: json['scrollDirection'] as String,
-    reverse: json['reverse'] as bool,
-    primary: json['primary'] as bool,
-    scrollPhysics: json['scrollPhysics'] == null
-        ? null
-        : FLDyUnitScrollPhysics.fromJson(
-            json['scrollPhysics'] as Map<String, dynamic>),
-    shrinkWrap: json['shrinkWrap'] as bool,
-    padding: json['padding'] == null
-        ? null
-        : FLDyUnitEdgeInsets.fromJson(json['padding'] as Map<String, dynamic>),
-    itemExtent: (json['itemExtent'] as num)?.toDouble(),
-    addAutomaticKeepAlives: json['addAutomaticKeepAlives'] as bool,
-    addRepaintBoundaries: json['addRepaintBoundaries'] as bool,
-    addSemanticIndexes: json['addSemanticIndexes'] as bool,
-    cacheExtent: (json['cacheExtent'] as num)?.toDouble(),
-    semanticChildCount: json['semanticChildCount'] as int,
-    separatedDivider: json['separatedDivider'] == null
-        ? null
-        : FLDyUnitDivider.fromJson(
-            json['separatedDivider'] as Map<String, dynamic>),
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyListViewUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => FLDyUnitModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      scrollDirection: json['scrollDirection'] as String?,
+      reverse: json['reverse'] as bool?,
+      primary: json['primary'] as bool?,
+      scrollPhysics: json['scrollPhysics'] == null
+          ? null
+          : FLDyUnitScrollPhysics.fromJson(
+              json['scrollPhysics'] as Map<String, dynamic>),
+      shrinkWrap: json['shrinkWrap'] as bool?,
+      padding: json['padding'] == null
+          ? null
+          : FLDyUnitEdgeInsets.fromJson(
+              json['padding'] as Map<String, dynamic>),
+      itemExtent: (json['itemExtent'] as num?)?.toDouble(),
+      addAutomaticKeepAlives: json['addAutomaticKeepAlives'] as bool?,
+      addRepaintBoundaries: json['addRepaintBoundaries'] as bool?,
+      addSemanticIndexes: json['addSemanticIndexes'] as bool?,
+      cacheExtent: (json['cacheExtent'] as num?)?.toDouble(),
+      semanticChildCount: json['semanticChildCount'] as int?,
+      separatedDivider: json['separatedDivider'] == null
+          ? null
+          : FLDyUnitDivider.fromJson(
+              json['separatedDivider'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$FLDyListViewUnitModelToJson(
         FLDyListViewUnitModel instance) =>
@@ -241,36 +229,35 @@ Map<String, dynamic> _$FLDyListViewUnitModelToJson(
     };
 
 FLDyListTileUnitModel _$FLDyListTileUnitModelFromJson(
-    Map<String, dynamic> json) {
-  return FLDyListTileUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    leading: json['leading'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['leading'] as Map<String, dynamic>),
-    title: json['title'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['title'] as Map<String, dynamic>),
-    subtitle: json['subtitle'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['subtitle'] as Map<String, dynamic>),
-    trailing: json['trailing'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['trailing'] as Map<String, dynamic>),
-    isThreeLine: json['isThreeLine'] as bool,
-    dense: json['dense'] as bool,
-    contentPadding: json['contentPadding'] == null
-        ? null
-        : FLDyUnitEdgeInsets.fromJson(
-            json['contentPadding'] as Map<String, dynamic>),
-    enabled: json['enabled'] as bool,
-    selected: json['selected'] as bool,
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyListTileUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      leading: json['leading'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['leading'] as Map<String, dynamic>),
+      title: json['title'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['title'] as Map<String, dynamic>),
+      subtitle: json['subtitle'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['subtitle'] as Map<String, dynamic>),
+      trailing: json['trailing'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['trailing'] as Map<String, dynamic>),
+      isThreeLine: json['isThreeLine'] as bool?,
+      dense: json['dense'] as bool?,
+      contentPadding: json['contentPadding'] == null
+          ? null
+          : FLDyUnitEdgeInsets.fromJson(
+              json['contentPadding'] as Map<String, dynamic>),
+      enabled: json['enabled'] as bool?,
+      selected: json['selected'] as bool?,
+    );
 
 Map<String, dynamic> _$FLDyListTileUnitModelToJson(
         FLDyListTileUnitModel instance) =>
@@ -289,41 +276,39 @@ Map<String, dynamic> _$FLDyListTileUnitModelToJson(
       'selected': instance.selected,
     };
 
-FLDyInkWellUnitModel _$FLDyInkWellUnitModelFromJson(Map<String, dynamic> json) {
-  return FLDyInkWellUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    align: json['align'] == null
-        ? null
-        : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
-    flex: json['flex'] as String,
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    child: json['child'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
-    children: (json['children'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FLDyUnitModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    onTap: json['onTap'] == null
-        ? null
-        : FLDyAction.fromJson(json['onTap'] as Map<String, dynamic>),
-    onDoubleTap: json['onDoubleTap'] == null
-        ? null
-        : FLDyAction.fromJson(json['onDoubleTap'] as Map<String, dynamic>),
-    onLongPress: json['onLongPress'] == null
-        ? null
-        : FLDyAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
-    focusColor: json['focusColor'] as String,
-    hoverColor: json['hoverColor'] as String,
-    highlightColor: json['highlightColor'] as String,
-    splashColor: json['splashColor'] as String,
-  );
-}
+FLDyInkWellUnitModel _$FLDyInkWellUnitModelFromJson(
+        Map<String, dynamic> json) =>
+    FLDyInkWellUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      align: json['align'] == null
+          ? null
+          : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
+      flex: json['flex'] as String?,
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      child: json['child'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => FLDyUnitModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      onTap: json['onTap'] == null
+          ? null
+          : FLDyAction.fromJson(json['onTap'] as Map<String, dynamic>),
+      onDoubleTap: json['onDoubleTap'] == null
+          ? null
+          : FLDyAction.fromJson(json['onDoubleTap'] as Map<String, dynamic>),
+      onLongPress: json['onLongPress'] == null
+          ? null
+          : FLDyAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
+      focusColor: json['focusColor'] as String?,
+      hoverColor: json['hoverColor'] as String?,
+      highlightColor: json['highlightColor'] as String?,
+      splashColor: json['splashColor'] as String?,
+    );
 
 Map<String, dynamic> _$FLDyInkWellUnitModelToJson(
         FLDyInkWellUnitModel instance) =>
@@ -345,13 +330,12 @@ Map<String, dynamic> _$FLDyInkWellUnitModelToJson(
     };
 
 FLDySizedBoxUnitModel _$FLDySizedBoxUnitModelFromJson(
-    Map<String, dynamic> json) {
-  return FLDySizedBoxUnitModel(
-    unitName: json['unitName'] as String,
-    width: (json['width'] as num)?.toDouble(),
-    height: (json['height'] as num)?.toDouble(),
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDySizedBoxUnitModel(
+      unitName: json['unitName'] as String?,
+      width: (json['width'] as num?)?.toDouble(),
+      height: (json['height'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$FLDySizedBoxUnitModelToJson(
         FLDySizedBoxUnitModel instance) =>
@@ -361,28 +345,28 @@ Map<String, dynamic> _$FLDySizedBoxUnitModelToJson(
       'height': instance.height,
     };
 
-FLDyTextUnitModel _$FLDyTextUnitModelFromJson(Map<String, dynamic> json) {
-  return FLDyTextUnitModel(
-    json['text'] as String,
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    textStyle: json['textStyle'] == null
-        ? null
-        : FLDyUnitTextStyle.fromJson(json['textStyle'] as Map<String, dynamic>),
-    textAlign: json['textAlign'] as String,
-    textDirection: json['textDirection'] as String,
-    softWrap: json['softWrap'] as bool,
-    textOverflow: json['textOverflow'] as String,
-    textScaleFactor: (json['textScaleFactor'] as num)?.toDouble(),
-    maxLines: json['maxLines'] as int,
-    semanticsLabel: json['semanticsLabel'] as String,
-    textWidthBasis: json['textWidthBasis'] as String,
-  );
-}
+FLDyTextUnitModel _$FLDyTextUnitModelFromJson(Map<String, dynamic> json) =>
+    FLDyTextUnitModel(
+      json['text'] as String,
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      textStyle: json['textStyle'] == null
+          ? null
+          : FLDyUnitTextStyle.fromJson(
+              json['textStyle'] as Map<String, dynamic>),
+      textAlign: json['textAlign'] as String?,
+      textDirection: json['textDirection'] as String?,
+      softWrap: json['softWrap'] as bool?,
+      textOverflow: json['textOverflow'] as String?,
+      textScaleFactor: (json['textScaleFactor'] as num?)?.toDouble(),
+      maxLines: json['maxLines'] as int?,
+      semanticsLabel: json['semanticsLabel'] as String?,
+      textWidthBasis: json['textWidthBasis'] as String?,
+    );
 
 Map<String, dynamic> _$FLDyTextUnitModelToJson(FLDyTextUnitModel instance) =>
     <String, dynamic>{
@@ -402,27 +386,27 @@ Map<String, dynamic> _$FLDyTextUnitModelToJson(FLDyTextUnitModel instance) =>
     };
 
 FLDyRichTextUnitModel _$FLDyRichTextUnitModelFromJson(
-    Map<String, dynamic> json) {
-  return FLDyRichTextUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    text: json['text'] == null
-        ? null
-        : FLDyTextSpanUnitModel.fromJson(json['text'] as Map<String, dynamic>),
-    textAlign: json['textAlign'] as String,
-    textDirection: json['textDirection'] as String,
-    softWrap: json['softWrap'] as bool,
-    textOverflow: json['textOverflow'] as String,
-    textScaleFactor: (json['textScaleFactor'] as num)?.toDouble(),
-    maxLines: json['maxLines'] as int,
-    semanticsLabel: json['semanticsLabel'] as String,
-    textWidthBasis: json['textWidthBasis'] as String,
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyRichTextUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      text: json['text'] == null
+          ? null
+          : FLDyTextSpanUnitModel.fromJson(
+              json['text'] as Map<String, dynamic>),
+      textAlign: json['textAlign'] as String?,
+      textDirection: json['textDirection'] as String?,
+      softWrap: json['softWrap'] as bool?,
+      textOverflow: json['textOverflow'] as String?,
+      textScaleFactor: (json['textScaleFactor'] as num?)?.toDouble(),
+      maxLines: json['maxLines'] as int?,
+      semanticsLabel: json['semanticsLabel'] as String?,
+      textWidthBasis: json['textWidthBasis'] as String?,
+    );
 
 Map<String, dynamic> _$FLDyRichTextUnitModelToJson(
         FLDyRichTextUnitModel instance) =>
@@ -442,25 +426,24 @@ Map<String, dynamic> _$FLDyRichTextUnitModelToJson(
     };
 
 FLDyTextSpanUnitModel _$FLDyTextSpanUnitModelFromJson(
-    Map<String, dynamic> json) {
-  return FLDyTextSpanUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    children: (json['children'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FLDyTextSpanUnitModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    text: json['text'] as String,
-    textStyle: json['textStyle'] == null
-        ? null
-        : FLDyUnitTextStyle.fromJson(json['textStyle'] as Map<String, dynamic>),
-    gesture: json['gesture'] == null
-        ? null
-        : FLDyGestureRecognizer.fromJson(
-            json['gesture'] as Map<String, dynamic>),
-    semanticsLabel: json['semanticsLabel'] as String,
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyTextSpanUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      children: (json['children'] as List<dynamic>?)
+          ?.map(
+              (e) => FLDyTextSpanUnitModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      text: json['text'] as String?,
+      textStyle: json['textStyle'] == null
+          ? null
+          : FLDyUnitTextStyle.fromJson(
+              json['textStyle'] as Map<String, dynamic>),
+      gesture: json['gesture'] == null
+          ? null
+          : FLDyGestureRecognizer.fromJson(
+              json['gesture'] as Map<String, dynamic>),
+      semanticsLabel: json['semanticsLabel'] as String?,
+    );
 
 Map<String, dynamic> _$FLDyTextSpanUnitModelToJson(
         FLDyTextSpanUnitModel instance) =>
@@ -473,32 +456,29 @@ Map<String, dynamic> _$FLDyTextSpanUnitModelToJson(
       'semanticsLabel': instance.semanticsLabel,
     };
 
-FLDyImageUnitModel _$FLDyImageUnitModelFromJson(Map<String, dynamic> json) {
-  return FLDyImageUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    flex: json['flex'] as String,
-    imageProvider: json['imageProvider'] == null
-        ? null
-        : FLDyUnitImageProvider.fromJson(
-            json['imageProvider'] as Map<String, dynamic>),
-    loading: json['loading'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['loading'] as Map<String, dynamic>),
-    width: (json['width'] as num)?.toDouble(),
-    height: (json['height'] as num)?.toDouble(),
-    color: json['color'] as String,
-    fit: json['fit'] as String,
-    alignment: json['alignment'] as String,
-    imageRepeat: json['imageRepeat'] as String,
-    semanticLabel: json['semanticLabel'] as String,
-    excludeFromSemantics: json['excludeFromSemantics'] as bool,
-  );
-}
+FLDyImageUnitModel _$FLDyImageUnitModelFromJson(Map<String, dynamic> json) =>
+    FLDyImageUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      flex: json['flex'] as String?,
+      imageProvider: FLDyUnitImageProvider.fromJson(
+          json['imageProvider'] as Map<String, dynamic>),
+      loading: json['loading'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['loading'] as Map<String, dynamic>),
+      width: (json['width'] as num?)?.toDouble(),
+      height: (json['height'] as num?)?.toDouble(),
+      color: json['color'] as String?,
+      fit: json['fit'] as String?,
+      alignment: json['alignment'] as String?,
+      imageRepeat: json['imageRepeat'] as String?,
+      semanticLabel: json['semanticLabel'] as String?,
+      excludeFromSemantics: json['excludeFromSemantics'] as bool?,
+    );
 
 Map<String, dynamic> _$FLDyImageUnitModelToJson(FLDyImageUnitModel instance) =>
     <String, dynamic>{
@@ -518,23 +498,20 @@ Map<String, dynamic> _$FLDyImageUnitModelToJson(FLDyImageUnitModel instance) =>
       'excludeFromSemantics': instance.excludeFromSemantics,
     };
 
-FLDyIconUnitModel _$FLDyIconUnitModelFromJson(Map<String, dynamic> json) {
-  return FLDyIconUnitModel(
-    json['icon'] == null
-        ? null
-        : FLDyUnitIconData.fromJson(json['icon'] as Map<String, dynamic>),
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    size: (json['size'] as num)?.toDouble(),
-    color: json['color'] as String,
-    semanticLabel: json['semanticLabel'] as String,
-    textDirection: json['textDirection'] as String,
-  );
-}
+FLDyIconUnitModel _$FLDyIconUnitModelFromJson(Map<String, dynamic> json) =>
+    FLDyIconUnitModel(
+      FLDyUnitIconData.fromJson(json['icon'] as Map<String, dynamic>),
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      size: (json['size'] as num?)?.toDouble(),
+      color: json['color'] as String?,
+      semanticLabel: json['semanticLabel'] as String?,
+      textDirection: json['textDirection'] as String?,
+    );
 
 Map<String, dynamic> _$FLDyIconUnitModelToJson(FLDyIconUnitModel instance) =>
     <String, dynamic>{
@@ -549,39 +526,35 @@ Map<String, dynamic> _$FLDyIconUnitModelToJson(FLDyIconUnitModel instance) =>
     };
 
 FLDyRaisedButtonUnitModel _$FLDyRaisedButtonUnitModelFromJson(
-    Map<String, dynamic> json) {
-  return FLDyRaisedButtonUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    align: json['align'] == null
-        ? null
-        : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
-    flex: json['flex'] as String,
-    child: json['child'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
-    children: (json['children'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FLDyUnitModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    onPressed: json['onPressed'] == null
-        ? null
-        : FLDyAction.fromJson(json['onPressed'] as Map<String, dynamic>),
-    onLongPress: json['onLongPress'] == null
-        ? null
-        : FLDyAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
-    textColor: json['textColor'] as String,
-    color: json['color'] as String,
-    padding: json['padding'] == null
-        ? null
-        : FLDyUnitEdgeInsets.fromJson(json['padding'] as Map<String, dynamic>),
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyRaisedButtonUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      align: json['align'] == null
+          ? null
+          : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
+      flex: json['flex'] as String?,
+      child: json['child'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => FLDyUnitModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      onPressed: FLDyAction.fromJson(json['onPressed'] as Map<String, dynamic>),
+      onLongPress: json['onLongPress'] == null
+          ? null
+          : FLDyAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
+      textColor: json['textColor'] as String?,
+      color: json['color'] as String?,
+      padding: json['padding'] == null
+          ? null
+          : FLDyUnitEdgeInsets.fromJson(
+              json['padding'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$FLDyRaisedButtonUnitModelToJson(
         FLDyRaisedButtonUnitModel instance) =>
@@ -601,39 +574,35 @@ Map<String, dynamic> _$FLDyRaisedButtonUnitModelToJson(
     };
 
 FLDyFlatButtonUnitModel _$FLDyFlatButtonUnitModelFromJson(
-    Map<String, dynamic> json) {
-  return FLDyFlatButtonUnitModel(
-    uniqueId: json['uniqueId'] as String,
-    unitName: json['unitName'] as String,
-    positioned: json['positioned'] == null
-        ? null
-        : FLDyUnitPositioned.fromJson(
-            json['positioned'] as Map<String, dynamic>),
-    align: json['align'] == null
-        ? null
-        : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
-    flex: json['flex'] as String,
-    child: json['child'] == null
-        ? null
-        : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
-    children: (json['children'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FLDyUnitModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    onPressed: json['onPressed'] == null
-        ? null
-        : FLDyAction.fromJson(json['onPressed'] as Map<String, dynamic>),
-    onLongPress: json['onLongPress'] == null
-        ? null
-        : FLDyAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
-    textColor: json['textColor'] as String,
-    color: json['color'] as String,
-    padding: json['padding'] == null
-        ? null
-        : FLDyUnitEdgeInsets.fromJson(json['padding'] as Map<String, dynamic>),
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyFlatButtonUnitModel(
+      uniqueId: json['uniqueId'] as String,
+      unitName: json['unitName'] as String?,
+      positioned: json['positioned'] == null
+          ? null
+          : FLDyUnitPositioned.fromJson(
+              json['positioned'] as Map<String, dynamic>),
+      align: json['align'] == null
+          ? null
+          : FLDyUnitAlign.fromJson(json['align'] as Map<String, dynamic>),
+      flex: json['flex'] as String?,
+      child: json['child'] == null
+          ? null
+          : FLDyUnitModel.fromJson(json['child'] as Map<String, dynamic>),
+      children: (json['children'] as List<dynamic>?)
+          ?.map((e) => FLDyUnitModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      onPressed: FLDyAction.fromJson(json['onPressed'] as Map<String, dynamic>),
+      onLongPress: json['onLongPress'] == null
+          ? null
+          : FLDyAction.fromJson(json['onLongPress'] as Map<String, dynamic>),
+      textColor: json['textColor'] as String?,
+      color: json['color'] as String?,
+      padding: json['padding'] == null
+          ? null
+          : FLDyUnitEdgeInsets.fromJson(
+              json['padding'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$FLDyFlatButtonUnitModelToJson(
         FLDyFlatButtonUnitModel instance) =>
@@ -652,14 +621,13 @@ Map<String, dynamic> _$FLDyFlatButtonUnitModelToJson(
       'padding': instance.padding,
     };
 
-FLDyUnitIconData _$FLDyUnitIconDataFromJson(Map<String, dynamic> json) {
-  return FLDyUnitIconData(
-    json['codePoint'] as int,
-    json['fontFamily'] as String,
-    json['fontPackage'] as String,
-    json['matchTextDirection'] as bool,
-  );
-}
+FLDyUnitIconData _$FLDyUnitIconDataFromJson(Map<String, dynamic> json) =>
+    FLDyUnitIconData(
+      json['codePoint'] as int,
+      json['fontFamily'] as String,
+      json['fontPackage'] as String,
+      json['matchTextDirection'] as bool?,
+    );
 
 Map<String, dynamic> _$FLDyUnitIconDataToJson(FLDyUnitIconData instance) =>
     <String, dynamic>{
@@ -669,26 +637,27 @@ Map<String, dynamic> _$FLDyUnitIconDataToJson(FLDyUnitIconData instance) =>
       'matchTextDirection': instance.matchTextDirection,
     };
 
-FLDyUnitTextStyle _$FLDyUnitTextStyleFromJson(Map<String, dynamic> json) {
-  return FLDyUnitTextStyle(
-    json['themeStyle'] as String,
-    json['inherit'] as bool,
-    json['color'] as String,
-    json['backgroundColor'] as String,
-    json['fontFamily'] as String,
-    (json['fontSize'] as num)?.toDouble(),
-    json['fontWeight'] as String,
-    json['fontStyle'] as String,
-    (json['letterSpacing'] as num)?.toDouble(),
-    (json['wordSpacing'] as num)?.toDouble(),
-    json['textBaseline'] as String,
-    (json['height'] as num)?.toDouble(),
-    (json['textDecorations'] as List)?.map((e) => e as String)?.toList(),
-    json['decorationColor'] as String,
-    json['decorationStyle'] as String,
-    (json['decorationThickness'] as num)?.toDouble(),
-  );
-}
+FLDyUnitTextStyle _$FLDyUnitTextStyleFromJson(Map<String, dynamic> json) =>
+    FLDyUnitTextStyle(
+      json['themeStyle'] as String?,
+      json['inherit'] as bool?,
+      json['color'] as String,
+      json['backgroundColor'] as String,
+      json['fontFamily'] as String,
+      (json['fontSize'] as num).toDouble(),
+      json['fontWeight'] as String,
+      json['fontStyle'] as String,
+      (json['letterSpacing'] as num).toDouble(),
+      (json['wordSpacing'] as num).toDouble(),
+      json['textBaseline'] as String,
+      (json['height'] as num).toDouble(),
+      (json['textDecorations'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      json['decorationColor'] as String,
+      json['decorationStyle'] as String,
+      (json['decorationThickness'] as num).toDouble(),
+    );
 
 Map<String, dynamic> _$FLDyUnitTextStyleToJson(FLDyUnitTextStyle instance) =>
     <String, dynamic>{
@@ -710,15 +679,14 @@ Map<String, dynamic> _$FLDyUnitTextStyleToJson(FLDyUnitTextStyle instance) =>
       'decorationThickness': instance.decorationThickness,
     };
 
-FLDyUnitDivider _$FLDyUnitDividerFromJson(Map<String, dynamic> json) {
-  return FLDyUnitDivider(
-    (json['height'] as num)?.toDouble(),
-    (json['thickness'] as num)?.toDouble(),
-    (json['indent'] as num)?.toDouble(),
-    (json['endIndent'] as num)?.toDouble(),
-    json['color'] as String,
-  );
-}
+FLDyUnitDivider _$FLDyUnitDividerFromJson(Map<String, dynamic> json) =>
+    FLDyUnitDivider(
+      (json['height'] as num).toDouble(),
+      (json['thickness'] as num).toDouble(),
+      (json['indent'] as num).toDouble(),
+      (json['endIndent'] as num).toDouble(),
+      json['color'] as String,
+    );
 
 Map<String, dynamic> _$FLDyUnitDividerToJson(FLDyUnitDivider instance) =>
     <String, dynamic>{
@@ -730,11 +698,10 @@ Map<String, dynamic> _$FLDyUnitDividerToJson(FLDyUnitDivider instance) =>
     };
 
 FLDyUnitScrollPhysics _$FLDyUnitScrollPhysicsFromJson(
-    Map<String, dynamic> json) {
-  return FLDyUnitScrollPhysics(
-    json['type'] as String,
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyUnitScrollPhysics(
+      json['type'] as String,
+    );
 
 Map<String, dynamic> _$FLDyUnitScrollPhysicsToJson(
         FLDyUnitScrollPhysics instance) =>
@@ -742,15 +709,14 @@ Map<String, dynamic> _$FLDyUnitScrollPhysicsToJson(
       'type': instance.type,
     };
 
-FLDyUnitEdgeInsets _$FLDyUnitEdgeInsetsFromJson(Map<String, dynamic> json) {
-  return FLDyUnitEdgeInsets(
-    (json['left'] as num)?.toDouble(),
-    (json['top'] as num)?.toDouble(),
-    (json['right'] as num)?.toDouble(),
-    (json['bottom'] as num)?.toDouble(),
-    (json['all'] as num)?.toDouble(),
-  );
-}
+FLDyUnitEdgeInsets _$FLDyUnitEdgeInsetsFromJson(Map<String, dynamic> json) =>
+    FLDyUnitEdgeInsets(
+      (json['left'] as num?)?.toDouble(),
+      (json['top'] as num?)?.toDouble(),
+      (json['right'] as num?)?.toDouble(),
+      (json['bottom'] as num?)?.toDouble(),
+      (json['all'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$FLDyUnitEdgeInsetsToJson(FLDyUnitEdgeInsets instance) =>
     <String, dynamic>{
@@ -762,14 +728,13 @@ Map<String, dynamic> _$FLDyUnitEdgeInsetsToJson(FLDyUnitEdgeInsets instance) =>
     };
 
 FLDyUnitImageProvider _$FLDyUnitImageProviderFromJson(
-    Map<String, dynamic> json) {
-  return FLDyUnitImageProvider(
-    json['type'] as String,
-    json['url'] as String,
-    json['assetName'] as String,
-    scale: (json['scale'] as num)?.toDouble(),
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyUnitImageProvider(
+      json['type'] as String,
+      json['url'] as String,
+      json['assetName'] as String,
+      scale: (json['scale'] as num?)?.toDouble() ?? 1.0,
+    );
 
 Map<String, dynamic> _$FLDyUnitImageProviderToJson(
         FLDyUnitImageProvider instance) =>
@@ -781,17 +746,14 @@ Map<String, dynamic> _$FLDyUnitImageProviderToJson(
     };
 
 FLDyUnitDecorationImage _$FLDyUnitDecorationImageFromJson(
-    Map<String, dynamic> json) {
-  return FLDyUnitDecorationImage(
-    json['imageProvider'] == null
-        ? null
-        : FLDyUnitImageProvider.fromJson(
-            json['imageProvider'] as Map<String, dynamic>),
-    json['fit'] as String,
-    json['alignment'] as String,
-    json['imageRepeat'] as String,
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyUnitDecorationImage(
+      FLDyUnitImageProvider.fromJson(
+          json['imageProvider'] as Map<String, dynamic>),
+      json['fit'] as String,
+      json['alignment'] as String,
+      json['imageRepeat'] as String,
+    );
 
 Map<String, dynamic> _$FLDyUnitDecorationImageToJson(
         FLDyUnitDecorationImage instance) =>
@@ -803,14 +765,13 @@ Map<String, dynamic> _$FLDyUnitDecorationImageToJson(
     };
 
 FLDyUnitBoxConstraints _$FLDyUnitBoxConstraintsFromJson(
-    Map<String, dynamic> json) {
-  return FLDyUnitBoxConstraints(
-    (json['minWidth'] as num)?.toDouble(),
-    (json['maxWidth'] as num)?.toDouble(),
-    (json['minHeight'] as num)?.toDouble(),
-    (json['maxHeight'] as num)?.toDouble(),
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyUnitBoxConstraints(
+      (json['minWidth'] as num?)?.toDouble(),
+      (json['maxWidth'] as num?)?.toDouble(),
+      (json['minHeight'] as num?)?.toDouble(),
+      (json['maxHeight'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$FLDyUnitBoxConstraintsToJson(
         FLDyUnitBoxConstraints instance) =>
@@ -822,28 +783,25 @@ Map<String, dynamic> _$FLDyUnitBoxConstraintsToJson(
     };
 
 FLDyUnitBoxDecoration _$FLDyUnitBoxDecorationFromJson(
-    Map<String, dynamic> json) {
-  return FLDyUnitBoxDecoration(
-    json['color'] as String,
-    json['image'] == null
-        ? null
-        : FLDyUnitDecorationImage.fromJson(
-            json['image'] as Map<String, dynamic>),
-    json['border'] == null
-        ? null
-        : FLDyUnitBorder.fromJson(json['border'] as Map<String, dynamic>),
-    json['borderRadius'] == null
-        ? null
-        : FLDyUnitBorderRadius.fromJson(
-            json['borderRadius'] as Map<String, dynamic>),
-    (json['boxShadow'] as List)
-        ?.map((e) => e == null
-            ? null
-            : FLDyUnitBoxShadow.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    json['shape'] as String,
-  );
-}
+        Map<String, dynamic> json) =>
+    FLDyUnitBoxDecoration(
+      json['color'] as String?,
+      json['image'] == null
+          ? null
+          : FLDyUnitDecorationImage.fromJson(
+              json['image'] as Map<String, dynamic>),
+      json['border'] == null
+          ? null
+          : FLDyUnitBorder.fromJson(json['border'] as Map<String, dynamic>),
+      json['borderRadius'] == null
+          ? null
+          : FLDyUnitBorderRadius.fromJson(
+              json['borderRadius'] as Map<String, dynamic>),
+      (json['boxShadow'] as List<dynamic>?)
+          ?.map((e) => FLDyUnitBoxShadow.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      json['shape'] as String?,
+    );
 
 Map<String, dynamic> _$FLDyUnitBoxDecorationToJson(
         FLDyUnitBoxDecoration instance) =>
@@ -856,16 +814,15 @@ Map<String, dynamic> _$FLDyUnitBoxDecorationToJson(
       'shape': instance.shape,
     };
 
-FLDyUnitBoxShadow _$FLDyUnitBoxShadowFromJson(Map<String, dynamic> json) {
-  return FLDyUnitBoxShadow(
-    json['color'] as String,
-    json['offset'] == null
-        ? null
-        : FLDyUnitOffset.fromJson(json['offset'] as Map<String, dynamic>),
-    (json['blurRadius'] as num)?.toDouble(),
-    (json['spreadRadius'] as num)?.toDouble(),
-  );
-}
+FLDyUnitBoxShadow _$FLDyUnitBoxShadowFromJson(Map<String, dynamic> json) =>
+    FLDyUnitBoxShadow(
+      json['color'] as String?,
+      json['offset'] == null
+          ? null
+          : FLDyUnitOffset.fromJson(json['offset'] as Map<String, dynamic>),
+      (json['blurRadius'] as num?)?.toDouble(),
+      (json['spreadRadius'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$FLDyUnitBoxShadowToJson(FLDyUnitBoxShadow instance) =>
     <String, dynamic>{
@@ -875,12 +832,11 @@ Map<String, dynamic> _$FLDyUnitBoxShadowToJson(FLDyUnitBoxShadow instance) =>
       'spreadRadius': instance.spreadRadius,
     };
 
-FLDyUnitOffset _$FLDyUnitOffsetFromJson(Map<String, dynamic> json) {
-  return FLDyUnitOffset(
-    (json['dx'] as num)?.toDouble(),
-    (json['dy'] as num)?.toDouble(),
-  );
-}
+FLDyUnitOffset _$FLDyUnitOffsetFromJson(Map<String, dynamic> json) =>
+    FLDyUnitOffset(
+      (json['dx'] as num?)?.toDouble(),
+      (json['dy'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$FLDyUnitOffsetToJson(FLDyUnitOffset instance) =>
     <String, dynamic>{
@@ -888,11 +844,11 @@ Map<String, dynamic> _$FLDyUnitOffsetToJson(FLDyUnitOffset instance) =>
       'dy': instance.dy,
     };
 
-FLDyUnitBorderRadius _$FLDyUnitBorderRadiusFromJson(Map<String, dynamic> json) {
-  return FLDyUnitBorderRadius(
-    (json['radius'] as num)?.toDouble(),
-  );
-}
+FLDyUnitBorderRadius _$FLDyUnitBorderRadiusFromJson(
+        Map<String, dynamic> json) =>
+    FLDyUnitBorderRadius(
+      (json['radius'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$FLDyUnitBorderRadiusToJson(
         FLDyUnitBorderRadius instance) =>
@@ -900,13 +856,12 @@ Map<String, dynamic> _$FLDyUnitBorderRadiusToJson(
       'radius': instance.radius,
     };
 
-FLDyUnitBorder _$FLDyUnitBorderFromJson(Map<String, dynamic> json) {
-  return FLDyUnitBorder(
-    json['color'] as String,
-    (json['width'] as num)?.toDouble(),
-    json['style'] as String,
-  );
-}
+FLDyUnitBorder _$FLDyUnitBorderFromJson(Map<String, dynamic> json) =>
+    FLDyUnitBorder(
+      json['color'] as String?,
+      (json['width'] as num?)?.toDouble(),
+      json['style'] as String?,
+    );
 
 Map<String, dynamic> _$FLDyUnitBorderToJson(FLDyUnitBorder instance) =>
     <String, dynamic>{
@@ -915,17 +870,16 @@ Map<String, dynamic> _$FLDyUnitBorderToJson(FLDyUnitBorder instance) =>
       'style': instance.style,
     };
 
-FLDyUnitAlign _$FLDyUnitAlignFromJson(Map<String, dynamic> json) {
-  return FLDyUnitAlign(
-    json['type'] as String,
-    json['mainAxisSize'] as String,
-    json['mainAxisAlignment'] as String,
-    json['crossAxisAlignment'] as String,
-    json['alignment'] as String,
-    (json['widthFactor'] as num)?.toDouble(),
-    (json['heightFactor'] as num)?.toDouble(),
-  );
-}
+FLDyUnitAlign _$FLDyUnitAlignFromJson(Map<String, dynamic> json) =>
+    FLDyUnitAlign(
+      json['type'] as String?,
+      json['mainAxisSize'] as String?,
+      json['mainAxisAlignment'] as String?,
+      json['crossAxisAlignment'] as String?,
+      json['alignment'] as String?,
+      (json['widthFactor'] as num?)?.toDouble(),
+      (json['heightFactor'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$FLDyUnitAlignToJson(FLDyUnitAlign instance) =>
     <String, dynamic>{
@@ -938,16 +892,15 @@ Map<String, dynamic> _$FLDyUnitAlignToJson(FLDyUnitAlign instance) =>
       'heightFactor': instance.heightFactor,
     };
 
-FLDyUnitPositioned _$FLDyUnitPositionedFromJson(Map<String, dynamic> json) {
-  return FLDyUnitPositioned(
-    (json['left'] as num)?.toDouble(),
-    (json['top'] as num)?.toDouble(),
-    (json['right'] as num)?.toDouble(),
-    (json['bottom'] as num)?.toDouble(),
-    (json['width'] as num)?.toDouble(),
-    (json['height'] as num)?.toDouble(),
-  );
-}
+FLDyUnitPositioned _$FLDyUnitPositionedFromJson(Map<String, dynamic> json) =>
+    FLDyUnitPositioned(
+      (json['left'] as num?)?.toDouble(),
+      (json['top'] as num?)?.toDouble(),
+      (json['right'] as num?)?.toDouble(),
+      (json['bottom'] as num?)?.toDouble(),
+      (json['width'] as num?)?.toDouble(),
+      (json['height'] as num?)?.toDouble(),
+    );
 
 Map<String, dynamic> _$FLDyUnitPositionedToJson(FLDyUnitPositioned instance) =>
     <String, dynamic>{

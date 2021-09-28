@@ -7,9 +7,9 @@ const _kScaleFactor = 0.4;
 
 class FLLoadingButton extends StatefulWidget {
   FLLoadingButton({
-    Key key,
-    this.child,
-    @required this.onPressed,
+    Key? key,
+    required this.child,
+    required this.onPressed,
     this.textTheme,
     this.textColor,
     this.color,
@@ -42,33 +42,33 @@ class FLLoadingButton extends StatefulWidget {
 
   final Widget child;
   final VoidCallback onPressed;
-  final ButtonTextTheme textTheme;
-  final ValueChanged<bool> onHighlightChanged;
-  final Color textColor;
-  final Color color;
-  final Color disabledColor;
-  final Color focusColor;
-  final Color hoverColor;
-  final Color highlightColor;
-  final Color disabledTextColor;
-  final Color splashColor;
-  final Brightness colorBrightness;
-  final double elevation;
-  final double focusElevation;
-  final double hoverElevation;
-  final double highlightElevation;
-  final double disabledElevation;
-  final EdgeInsetsGeometry padding;
-  final ShapeBorder shape;
+  final ButtonTextTheme? textTheme;
+  final ValueChanged<bool>? onHighlightChanged;
+  final Color? textColor;
+  final Color? color;
+  final Color? disabledColor;
+  final Color? focusColor;
+  final Color? hoverColor;
+  final Color? highlightColor;
+  final Color? disabledTextColor;
+  final Color? splashColor;
+  final Brightness? colorBrightness;
+  final double? elevation;
+  final double? focusElevation;
+  final double? hoverElevation;
+  final double? highlightElevation;
+  final double? disabledElevation;
+  final EdgeInsetsGeometry? padding;
+  final ShapeBorder? shape;
   final Clip clipBehavior;
-  final FocusNode focusNode;
-  final MaterialTapTargetSize materialTapTargetSize;
-  final Duration animationDuration;
-  final double minWidth;
-  final double height;
+  final FocusNode? focusNode;
+  final MaterialTapTargetSize? materialTapTargetSize;
+  final Duration? animationDuration;
+  final double? minWidth;
+  final double? height;
 
-  final Color indicatorColor;
-  final double indicatorSize;
+  final Color? indicatorColor;
+  final double? indicatorSize;
   final bool indicatorOnly;
   final bool loading;
 
@@ -84,11 +84,11 @@ class FLLoadingButtonState extends State<FLLoadingButton> {
         widget.indicatorColor ?? Theme.of(context).accentColor;
     // indicator size
     double scaleFactor;
-    if (widget.indicatorSize != null && widget.indicatorSize > 0) {
-      scaleFactor = widget.indicatorSize / _kScaleHeight;
+    if (widget.indicatorSize != null && widget.indicatorSize! > 0) {
+      scaleFactor = widget.indicatorSize! / _kScaleHeight;
     } else {
       scaleFactor = (widget.height != null)
-          ? _kScaleFactor * (widget.height / _kScaleHeight)
+          ? _kScaleFactor * (widget.height! / _kScaleHeight)
           : _kScaleFactor;
     }
     // indicator area

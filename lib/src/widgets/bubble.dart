@@ -12,11 +12,11 @@ enum FLBubbleFrom { bottom, top, left, right }
 
 class FLBubble extends StatelessWidget {
   FLBubble(
-      {Key key,
+      {Key? key,
       this.backgroundColor = CupertinoColors.white,
       this.from = FLBubbleFrom.bottom,
       this.padding = const EdgeInsets.all(8),
-      @required this.child})
+      required this.child})
       : super(key: key);
 
   final Color backgroundColor;
@@ -104,7 +104,7 @@ class FLBubble extends StatelessWidget {
 }
 
 class _FLBubbleNotchPainter extends CustomPainter {
-  _FLBubbleNotchPainter({this.pos, this.backgroundColor});
+  _FLBubbleNotchPainter({required this.pos, required this.backgroundColor});
 
   final FLBubbleFrom pos;
   final Color backgroundColor;

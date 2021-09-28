@@ -9,8 +9,8 @@ const int _kTimerGap = 100;
 
 class FLMarqueeLabel extends StatefulWidget {
   FLMarqueeLabel(
-      {Key key,
-      @required this.text,
+      {Key? key,
+      required this.text,
       this.style,
       this.space,
       this.velocity = 0.4,
@@ -19,24 +19,23 @@ class FLMarqueeLabel extends StatefulWidget {
       this.padding,
       this.delay,
       this.backgroundColor = Colors.transparent})
-      : assert(text != null),
-        super(key: key);
+      : super(key: key);
 
   final String text;
-  final TextStyle style;
+  final TextStyle? style;
 
   /// The space between text & 'the next same text'
   /// If not set, it will be the screen width.
-  final double space;
+  final double? space;
 
   /// The scroll velocity, if it is zero, will not scroll.
   /// The value range is [0-1]
   final double velocity;
   final bool loop;
   final double height;
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
   final Color backgroundColor;
-  final Duration delay;
+  final Duration? delay;
 
   @override
   State<FLMarqueeLabel> createState() => _FLMarqueeLabelState();
@@ -47,10 +46,10 @@ class _FLMarqueeLabelState extends State<FLMarqueeLabel>
   final ScrollController _scrollController = ScrollController();
   final GlobalKey _listViewKey = GlobalKey();
   final GlobalKey _textKey = GlobalKey();
-  Timer _timer;
+  Timer? _timer;
   double _pos = 0.0;
-  double _velocity;
-  double _space;
+  double _velocity = 0;
+  double _space = 0;
 
   @override
   void initState() {
@@ -79,9 +78,9 @@ class _FLMarqueeLabelState extends State<FLMarqueeLabel>
   }
 
   void _setup() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
       if (widget.delay != null) {
-        Future.delayed(widget.delay, () => _scheduleScroll());
+        Future.delayed(widget.delay!, () => _scheduleScroll());
       } else {
         _scheduleScroll();
       }
@@ -90,7 +89,7 @@ class _FLMarqueeLabelState extends State<FLMarqueeLabel>
 
   void _stop() {
     if (_timer != null) {
-      _timer.cancel();
+      _timer!.cancel();
       _timer = null;
     }
   }
@@ -98,11 +97,16 @@ class _FLMarqueeLabelState extends State<FLMarqueeLabel>
   void _scheduleScroll() {
     if (_velocity == 0) return;
 
-    double widgetWidth =
-        _listViewKey.currentContext.findRenderObject().paintBounds.size.width;
+    double widgetWidth = _listViewKey.currentContext
+            ?.findRenderObject()
+            ?.paintBounds
+            .size
+            .width ??
+        0;
     double moveOffset = _kDefaultDistance * _velocity;
     double textWidth =
-        _textKey.currentContext.findRenderObject().paintBounds.size.width;
+        _textKey.currentContext?.findRenderObject()?.paintBounds.size.width ??
+            0;
 
     if (textWidth + _space < widgetWidth) {
       throw (AssertionError(

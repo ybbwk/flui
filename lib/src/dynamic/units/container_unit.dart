@@ -6,7 +6,7 @@ import 'package:flui/src/dynamic/action/action.dart';
 
 /// Container unit widget
 class FLDyContainerUnit extends FLDyRenderUnit {
-  FLDyContainerUnit({FLDyContainerUnitModel unitModel})
+  FLDyContainerUnit({required FLDyContainerUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyContainerUnitModel),
         super(unitModel: unitModel);
 
@@ -31,7 +31,7 @@ class FLDyContainerUnit extends FLDyRenderUnit {
 
 /// SafeArea unit widget
 class FLDySafeAreaUnit extends FLDyRenderUnit {
-  FLDySafeAreaUnit({FLDySafeAreaUnitModel unitModel})
+  FLDySafeAreaUnit({required FLDySafeAreaUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDySafeAreaUnitModel),
         super(unitModel: unitModel);
 
@@ -53,7 +53,7 @@ class FLDySafeAreaUnit extends FLDyRenderUnit {
 
 /// Stack unit widget
 class FLDyStackUnit extends FLDyRenderUnit {
-  FLDyStackUnit({FLDyStackUnitModel unitModel})
+  FLDyStackUnit({required FLDyStackUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyStackUnitModel),
         super(unitModel: unitModel);
 
@@ -74,7 +74,7 @@ class FLDyStackUnit extends FLDyRenderUnit {
 
 /// ListView unit widget
 class FLDyListViewUnit extends FLDyRenderUnit {
-  FLDyListViewUnit({FLDyListViewUnitModel unitModel})
+  FLDyListViewUnit({required FLDyListViewUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyListViewUnitModel),
         super(unitModel: unitModel);
 
@@ -89,7 +89,7 @@ class FLDyListViewUnit extends FLDyRenderUnit {
           return children[index];
         },
         separatorBuilder: (BuildContext context, int index) {
-          return lvum.separatedDivider.toDivider(context);
+          return lvum.separatedDivider!.toDivider(context);
         },
         itemCount: children.length,
         scrollDirection: lvum.getScrollDirection(),
@@ -126,7 +126,7 @@ class FLDyListViewUnit extends FLDyRenderUnit {
 
 /// ListTile unit widget
 class FLDyListTileUnit extends FLDyRenderUnit {
-  FLDyListTileUnit({FLDyListTileUnitModel unitModel})
+  FLDyListTileUnit({required FLDyListTileUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyListTileUnitModel),
         super(unitModel: unitModel);
 
@@ -150,7 +150,7 @@ class FLDyListTileUnit extends FLDyRenderUnit {
 
 /// InkWell unit widget
 class FLDyInkWellUnit extends FLDyRenderUnit {
-  FLDyInkWellUnit({FLDyInkWellUnitModel unitModel})
+  FLDyInkWellUnit({required FLDyInkWellUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyInkWellUnitModel),
         super(unitModel: unitModel);
 

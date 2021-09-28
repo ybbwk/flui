@@ -15,8 +15,8 @@ const Color _kDefaultBackgroundColor = Color.fromRGBO(242, 243, 245, 1);
 
 class FLCountStepper extends StatefulWidget {
   FLCountStepper({
-    Key key,
-    @required this.controller,
+    Key? key,
+    required this.controller,
     this.onChanged,
     this.disabled = false,
     this.disableInput = true,
@@ -29,7 +29,7 @@ class FLCountStepper extends StatefulWidget {
   final FLCountStepperController controller;
 
   /// value changed callback
-  final ValueChanged<num> onChanged;
+  final ValueChanged<num>? onChanged;
 
   /// disable step button
   final bool disabled;
@@ -41,18 +41,18 @@ class FLCountStepper extends StatefulWidget {
   final double inputWidth;
 
   /// default is Theme.of(context).primaryColor
-  final Color actionColor;
+  final Color? actionColor;
 
   @override
   State<FLCountStepper> createState() => _FLCountStepperState();
 }
 
 class _FLCountStepperState extends State<FLCountStepper> {
-  FLCountStepperController _controller;
+  FLCountStepperController? _controller;
   TextEditingController _inputController = TextEditingController();
-  bool _minusEnabled;
-  bool _addEnabled;
-  int _maxLength;
+  bool? _minusEnabled;
+  bool? _addEnabled;
+  int? _maxLength;
 
   @override
   void initState() {
@@ -68,57 +68,57 @@ class _FLCountStepperState extends State<FLCountStepper> {
 
   void _assembleCountStepper() {
     _controller = widget.controller;
-    int number = _controller.value;
+    int number = _controller!.value;
     _inputController.value = TextEditingValue(text: '$number');
-    _minusEnabled = !(widget.disabled || _controller.isMin());
-    _addEnabled = !(widget.disabled || _controller.isMax());
+    _minusEnabled = !(widget.disabled || _controller!.isMin());
+    _addEnabled = !(widget.disabled || _controller!.isMax());
 
-    _controller.addListener(_onStepperValueChanged);
+    _controller?.addListener(_onStepperValueChanged);
   }
 
   void _onStepperValueChanged() {
-    num number = _controller.number;
+    num number = _controller!.number;
     _inputController.value = TextEditingValue(text: '$number');
   }
 
   void _handleMinusPressed() {
     _resignFocus();
     _syncValueAndInput();
-    _controller.minus();
+    _controller?.minus();
     _updateEnableStates();
 
     if (widget.onChanged != null) {
-      widget.onChanged(_controller.number);
+      widget.onChanged!(_controller!.number);
     }
   }
 
   void _handleAddPressed() {
     _resignFocus();
     _syncValueAndInput();
-    _controller.add();
+    _controller?.add();
     _updateEnableStates();
 
     if (widget.onChanged != null) {
-      widget.onChanged(_controller.number);
+      widget.onChanged!(_controller!.number);
     }
   }
 
   void _syncValueAndInput() {
     String text = _inputController.value.text;
     if (text == null || text.trim().length == 0) {
-      num regVal = math.min(_controller.max, math.max(0, _controller.min));
+      num regVal = math.min(_controller!.max, math.max(0, _controller!.min));
       text = '$regVal';
     }
 
-    if (_controller.value.compareTo(num.parse(text)) != 0) {
-      _controller.number = num.parse(text);
+    if (_controller!.value.compareTo(num.parse(text)) != 0) {
+      _controller?.number = num.parse(text).toInt();
     }
   }
 
   void _updateEnableStates() {
     setState(() {
-      _minusEnabled = !_controller.isMin();
-      _addEnabled = !_controller.isMax();
+      _minusEnabled = !_controller!.isMin();
+      _addEnabled = !_controller!.isMax();
     });
   }
 
@@ -132,18 +132,18 @@ class _FLCountStepperState extends State<FLCountStepper> {
     _resignFocus();
     _syncValueAndInput();
 
-    num curValue = _controller.number;
+    num curValue = _controller!.number;
     _inputController.value = TextEditingValue(text: '$curValue');
     _updateEnableStates();
 
     if (widget.onChanged != null) {
-      widget.onChanged(_controller.number);
+      widget.onChanged!(_controller!.number);
     }
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller?.dispose();
     _inputController.dispose();
     super.dispose();
   }
@@ -154,9 +154,10 @@ class _FLCountStepperState extends State<FLCountStepper> {
     final ThemeData themeData = Theme.of(context);
     final Brightness brightness = themeData.brightness;
     final bool isDarkMode = brightness == Brightness.dark;
-    final Color buttonIconColor = widget.actionColor ?? isDarkMode
-        ? Colors.white
-        : themeData.primaryColor;
+    final Color buttonIconColor =
+        (widget.actionColor == null ? isDarkMode : true)
+            ? Colors.white
+            : themeData.primaryColor;
     final Color inputBackgroundColor =
         isDarkMode ? Colors.transparent : _kDefaultBackgroundColor;
 
@@ -169,7 +170,7 @@ class _FLCountStepperState extends State<FLCountStepper> {
             size:
                 _kDefaultEleSize), //Text('-', textAlign: TextAlign.center, style: TextStyle(fontSize: 18)),
         textColor: buttonIconColor,
-        onPressed: _minusEnabled ? _handleMinusPressed : null,
+        onPressed: _minusEnabled == true ? _handleMinusPressed : null,
       ),
     );
 
@@ -209,7 +210,7 @@ class _FLCountStepperState extends State<FLCountStepper> {
             size:
                 _kDefaultEleSize), //Text('+', textAlign: TextAlign.center, style: TextStyle(fontSize: 18)),
         textColor: buttonIconColor,
-        onPressed: _addEnabled ? _handleAddPressed : null,
+        onPressed: _addEnabled == true ? _handleAddPressed : null,
       ),
     );
 
@@ -242,14 +243,14 @@ class _FLCountStepperState extends State<FLCountStepper> {
 
 class _FLFloatingAnimationWrapper extends StatefulWidget {
   _FLFloatingAnimationWrapper({
-    Key key,
-    @required this.controller,
-    @required this.child,
+    Key? key,
+    required this.controller,
+    required this.child,
     this.marginLeft = 0,
     this.targetLeft = 0,
     this.marginTop = 0,
-    this.width,
-    this.height,
+    required this.width,
+    required this.height,
   }) : super(key: key);
 
   final Animation<double> controller;
@@ -266,8 +267,8 @@ class _FLFloatingAnimationWrapper extends StatefulWidget {
 
 class _FLFloatingAnimationWrapperState
     extends State<_FLFloatingAnimationWrapper> {
-  Animation<double> rotateAnim;
-  Animation<double> transRightAnim;
+  Animation<double>? rotateAnim;
+  Animation<double>? transRightAnim;
 
   @override
   void initState() {
@@ -288,12 +289,12 @@ class _FLFloatingAnimationWrapperState
     return AnimatedBuilder(
       animation: widget.controller,
       child: widget.child,
-      builder: (BuildContext context, Widget child) {
+      builder: (BuildContext context, Widget? child) {
         return Positioned(
             top: widget.marginTop,
-            left: transRightAnim.value,
+            left: transRightAnim?.value,
             child: RotationTransition(
-              turns: rotateAnim,
+              turns: rotateAnim!,
               child: Container(
                 width: widget.width,
                 height: widget.height,
@@ -310,8 +311,8 @@ class _FLFloatingAnimationWrapperState
 /// FLFloatingCountStepper can't edit input value.
 class FLFloatingCountStepper extends StatefulWidget {
   FLFloatingCountStepper({
-    Key key,
-    @required this.controller,
+    Key? key,
+    required this.controller,
     this.onChanged,
     this.disabled = false,
     this.labelWidth = _kDefaultFloatingTextWidth,
@@ -324,7 +325,7 @@ class FLFloatingCountStepper extends StatefulWidget {
   final FLCountStepperController controller;
 
   /// value changed callback
-  final ValueChanged<num> onChanged;
+  final ValueChanged<num>? onChanged;
 
   /// disable step button
   final bool disabled;
@@ -333,10 +334,10 @@ class FLFloatingCountStepper extends StatefulWidget {
   final double labelWidth;
 
   /// the style of text
-  final TextStyle labelTextStyle;
+  final TextStyle? labelTextStyle;
 
   /// default is Theme.of(context).primaryColor
-  final Color actionColor;
+  final Color? actionColor;
 
   @override
   State<FLFloatingCountStepper> createState() => _FLFloatingCountStepperState();
@@ -344,11 +345,11 @@ class FLFloatingCountStepper extends StatefulWidget {
 
 class _FLFloatingCountStepperState extends State<FLFloatingCountStepper>
     with TickerProviderStateMixin {
-  FLCountStepperController _controller;
+  FLCountStepperController? _controller;
   TextEditingController _inputController = TextEditingController();
-  bool _minusEnabled;
-  bool _addEnabled;
-  AnimationController _animationController;
+  bool? _minusEnabled;
+  bool? _addEnabled;
+  AnimationController? _animationController;
 
   @override
   void initState() {
@@ -368,64 +369,64 @@ class _FLFloatingCountStepperState extends State<FLFloatingCountStepper>
 
   void _assembleCountStepper() {
     _controller = widget.controller;
-    int number = _controller.value;
+    int number = _controller!.value;
     _inputController.value = TextEditingValue(text: '$number');
-    _minusEnabled = !(widget.disabled || _controller.isMin());
-    _addEnabled = !(widget.disabled || _controller.isMax());
+    _minusEnabled = !(widget.disabled || _controller!.isMin());
+    _addEnabled = !(widget.disabled || _controller!.isMax());
   }
 
   void _onStepperValueChanged() {
-    num number = _controller.number;
+    num number = _controller!.number;
     _inputController.value = TextEditingValue(text: '$number');
   }
 
   void _handleMinusPressed() {
     _resignFocus();
     _syncValueAndInput();
-    _controller.minus();
+    _controller?.minus();
     _onStepperValueChanged();
     _updateEnableStates();
 
-    if (_controller.isMin()) {
+    if (_controller!.isMin()) {
       _reversMinusAnim();
     }
 
     if (widget.onChanged != null) {
-      widget.onChanged(_controller.number);
+      widget.onChanged!(_controller!.number);
     }
   }
 
   void _handleAddPressed() {
-    if (_controller.isMin()) {
+    if (_controller!.isMin()) {
       _playMinusAnim();
     }
 
     _resignFocus();
     _syncValueAndInput();
-    _controller.add();
+    _controller?.add();
     _onStepperValueChanged();
     _updateEnableStates();
 
     if (widget.onChanged != null) {
-      widget.onChanged(_controller.number);
+      widget.onChanged!(_controller!.number);
     }
   }
 
   void _syncValueAndInput() {
-    if (_controller.value.compareTo(num.parse(_inputController.text)) != 0) {
+    if (_controller!.value.compareTo(num.parse(_inputController.text)) != 0) {
       String text = _inputController.value.text;
       if (text == null || text.trim().length == 0) {
-        num regVal = math.min(_controller.max, math.max(0, _controller.min));
+        num regVal = math.min(_controller!.max, math.max(0, _controller!.min));
         text = '$regVal';
       }
-      _controller.number = num.parse(text);
+      _controller!.number = num.parse(text).toInt();
     }
   }
 
   void _updateEnableStates() {
     setState(() {
-      _minusEnabled = !_controller.isMin();
-      _addEnabled = !_controller.isMax();
+      _minusEnabled = !_controller!.isMin();
+      _addEnabled = !_controller!.isMax();
     });
   }
 
@@ -437,21 +438,21 @@ class _FLFloatingCountStepperState extends State<FLFloatingCountStepper>
 
   Future<Null> _playMinusAnim() async {
     try {
-      await _animationController.forward().orCancel;
+      await _animationController?.forward().orCancel;
     } on TickerCanceled {}
   }
 
   Future<Null> _reversMinusAnim() async {
     try {
-      await _animationController.reverse().orCancel;
+      await _animationController?.reverse().orCancel;
     } on TickerCanceled {}
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller?.dispose();
     _inputController.dispose();
-    _animationController.dispose();
+    _animationController?.dispose();
     super.dispose();
   }
 
@@ -466,12 +467,12 @@ class _FLFloatingCountStepperState extends State<FLFloatingCountStepper>
       marginLeft: widget.labelWidth + _kDefaultFloatingButtonSize + inset * 2,
       width: _kDefaultFloatingButtonSize,
       height: _kDefaultFloatingButtonSize,
-      controller: _animationController,
+      controller: _animationController!,
       child: FlatButton(
         padding: EdgeInsets.zero,
         shape: CircleBorder(side: BorderSide(color: tintColor)),
         child: Icon(Icons.remove, size: _kDefaultEleSize, color: tintColor),
-        onPressed: _minusEnabled ? _handleMinusPressed : null,
+        onPressed: _minusEnabled == true ? _handleMinusPressed : null,
       ),
     );
 
@@ -481,7 +482,7 @@ class _FLFloatingCountStepperState extends State<FLFloatingCountStepper>
         marginLeft: widget.labelWidth + _kDefaultFloatingButtonSize + inset * 2,
         width: widget.labelWidth,
         height: _kDefaultInputHeight,
-        controller: _animationController,
+        controller: _animationController!,
         child: Center(
           child: Text(
             _inputController.value.text,
@@ -498,7 +499,7 @@ class _FLFloatingCountStepperState extends State<FLFloatingCountStepper>
         shape: CircleBorder(),
         child: Icon(Icons.add, size: _kDefaultEleSize, color: Colors.white),
         color: tintColor,
-        onPressed: _addEnabled ? _handleAddPressed : null,
+        onPressed: _addEnabled == true ? _handleAddPressed : null,
       ),
     );
 
@@ -527,15 +528,15 @@ class FLCountStepperController extends ValueNotifier<int> {
     this.max = 999,
     this.step = 1,
   })  : assert(min < max),
-        super(defaultValue ?? min > 0 ? min : 0);
+        super(defaultValue ?? (min > 0 ? min : 0));
 
-  final int defaultValue;
+  final int? defaultValue;
   final int min;
   final int max;
   final int step;
 
-  num get number => value;
-  set number(num newNum) {
+  int get number => value;
+  set number(int newNum) {
     if (newNum > max) newNum = max;
     if (newNum < min) newNum = min;
 
@@ -559,6 +560,6 @@ class FLCountStepperController extends ValueNotifier<int> {
   }
 
   void clear() {
-    value = defaultValue;
+    value = defaultValue ?? (min > 0 ? min : 0);
   }
 }

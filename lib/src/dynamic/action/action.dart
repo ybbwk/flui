@@ -31,9 +31,9 @@ class FLDyFrameworkAction {
 /// Action Model
 class FLDyAction {
   FLDyAction({
-    this.actionType,
-    this.action,
-    this.args,
+    required this.actionType,
+    required this.action,
+    required this.args,
   });
 
   final String actionType;
@@ -53,8 +53,8 @@ class FLDyAction {
 class FLDyGestureRecognizer {
   FLDyGestureRecognizer(this.onTap, this.onLongPress);
 
-  final FLDyAction onTap;
-  final FLDyAction onLongPress;
+  final FLDyAction? onTap;
+  final FLDyAction? onLongPress;
 
   factory FLDyGestureRecognizer.fromJson(Map<String, dynamic> json) =>
       _$FLDyGestureRecognizerFromJson(json);
@@ -68,7 +68,7 @@ class FLDyActionDispatch {
   final LinkedHashMap _customActionMap = new LinkedHashMap();
 
   void dispatchAction(
-      String uniqueId, FLDyAction action, BuildContext context) {
+      String uniqueId, FLDyAction? action, BuildContext context) {
     if (action == null) return;
     if (action.actionType == FLDyActionType.builtin) {
       _dispatchBuiltinAction(action, context);
@@ -96,7 +96,7 @@ class FLDyActionDispatch {
 
   void _dispatchBuiltinAction(FLDyAction action, BuildContext context) {
     String act = action.action;
-    String descriptor = act?.split('.')?.last;
+    String? descriptor = act.split('.').last;
     if (act.startsWith('@navigator')) {
       switch (descriptor) {
         case FLDyNavigatorAction.pushNamed:

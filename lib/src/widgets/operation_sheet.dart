@@ -16,35 +16,35 @@ const CupertinoDynamicColor _kTextColor = CupertinoDynamicColor.withBrightness(
 /// The operation sheet is based on [FLCupertinoActionSheet].
 class FLCupertinoOperationSheet extends StatelessWidget {
   FLCupertinoOperationSheet({
-    Key key,
+    Key? key,
     this.borderRadius,
     this.sheetStyle,
     this.backgroundColor,
     this.cancelButton,
     this.header,
-    @required this.itemList,
-  })  : assert(itemList != null && itemList.length > 0),
+    required this.itemList,
+  })  : assert(itemList.length > 0),
         super(key: key);
 
-  final BorderRadius borderRadius;
-  final FLCupertinoActionSheetStyle sheetStyle;
-  final Color backgroundColor;
-  final CupertinoActionSheetAction cancelButton;
+  final BorderRadius? borderRadius;
+  final FLCupertinoActionSheetStyle? sheetStyle;
+  final Color? backgroundColor;
+  final CupertinoActionSheetAction? cancelButton;
 
-  final Widget header;
+  final Widget? header;
   final List<List<FLCupertinoOperationSheetItem>> itemList;
 
   List<Widget> _buildAllSections() {
     List<Widget> children = [];
     // add header
     if (header != null) {
-      children.add(header);
+      children.add(header!);
       children.add(Divider(height: 1));
     }
     // add items
     int sectionCount = itemList.length;
     for (int i = 0; i < sectionCount; i++) {
-      List list = itemList[i];
+      var list = itemList[i];
       Widget section = _buildSection(list);
       children.add(section);
       if (i != sectionCount - 1) {
@@ -90,7 +90,7 @@ class FLCupertinoOperationSheet extends StatelessWidget {
 
 class FLCupertinoOperationSheetItem extends StatelessWidget {
   FLCupertinoOperationSheetItem({
-    Key key,
+    Key? key,
     this.imagePath,
     this.highlightImagePath,
     this.title,
@@ -100,11 +100,11 @@ class FLCupertinoOperationSheetItem extends StatelessWidget {
             customChild != null),
         super(key: key);
 
-  final String imagePath;
-  final String highlightImagePath;
-  final String title;
-  final VoidCallback onPressed;
-  final Widget customChild;
+  final String? imagePath;
+  final String? highlightImagePath;
+  final String? title;
+  final VoidCallback? onPressed;
+  final Widget? customChild;
 
   Widget _buildImageTitleItem(BuildContext context) {
     return Column(
@@ -114,7 +114,7 @@ class FLCupertinoOperationSheetItem extends StatelessWidget {
       children: <Widget>[
         FLImage(
           borderRadius: BorderRadius.circular(10),
-          image: AssetImage(imagePath),
+          image: AssetImage(imagePath!),
           width: _kItemImageSize,
           height: _kItemImageSize,
           fit: BoxFit.fill,
@@ -124,7 +124,7 @@ class FLCupertinoOperationSheetItem extends StatelessWidget {
           height: 10,
         ),
         Text(
-          title,
+          title!,
           style: TextStyle(
             color: CupertinoDynamicColor.resolve(_kTextColor, context),
             decoration: TextDecoration.none,

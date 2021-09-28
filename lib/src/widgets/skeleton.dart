@@ -6,14 +6,14 @@ enum FLSkeletonAnimationType { shimmer, stretch }
 
 class FLSkeleton extends StatefulWidget {
   FLSkeleton(
-      {Key key,
-      this.shape,
+      {Key? key,
+      required this.shape,
       this.padding,
       this.color,
       this.shimmerColor,
-      this.width,
-      this.height,
-      this.margin,
+      required this.width,
+      required this.height,
+      required this.margin,
       this.borderRadius,
       this.duration,
       this.active = true,
@@ -22,14 +22,14 @@ class FLSkeleton extends StatefulWidget {
       : super(key: key);
 
   final BoxShape shape;
-  final EdgeInsetsGeometry padding;
-  final Color color;
-  final Color shimmerColor;
+  final EdgeInsetsGeometry? padding;
+  final Color? color;
+  final Color? shimmerColor;
   final double width;
   final double height;
   final EdgeInsetsGeometry margin;
-  final BorderRadiusGeometry borderRadius;
-  final Duration duration;
+  final BorderRadiusGeometry? borderRadius;
+  final Duration? duration;
 
   /// Show animation or not, default is true.
   final bool active;
@@ -39,7 +39,7 @@ class FLSkeleton extends StatefulWidget {
   final FLSkeletonAnimationType type;
 
   /// The 'animate to' width when choose [FLSkeletonAnimationType.stretch] type.
-  final double stretchWidth;
+  final double? stretchWidth;
 
   @override
   State<FLSkeleton> createState() => _FLSkeletonState();
@@ -47,8 +47,8 @@ class FLSkeleton extends StatefulWidget {
 
 class _FLSkeletonState extends State<FLSkeleton>
     with SingleTickerProviderStateMixin {
-  Animation<double> _animation;
-  AnimationController _controller;
+  late Animation<double> _animation;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -127,7 +127,7 @@ class _FLSkeletonState extends State<FLSkeleton>
           final Color color = widget.color ?? const Color(0xFFE8E8E8);
           final Color shimmerColor =
               widget.shimmerColor ?? const Color(0xFFEDEDED);
-          final Gradient gradient = widget.type ==
+          final Gradient? gradient = widget.type ==
                   FLSkeletonAnimationType.shimmer
               ? LinearGradient(
                   begin: isRtl ? Alignment.centerRight : Alignment.centerLeft,

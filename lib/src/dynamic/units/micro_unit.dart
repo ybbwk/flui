@@ -8,7 +8,7 @@ import 'package:flui/src/dynamic/action/action.dart';
 
 /// SizedBox
 class FLDySizedBoxUnit extends FLDyRenderUnit {
-  FLDySizedBoxUnit({FLDySizedBoxUnitModel unitModel})
+  FLDySizedBoxUnit({required FLDySizedBoxUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDySizedBoxUnitModel),
         super(unitModel: unitModel);
 
@@ -23,7 +23,7 @@ class FLDySizedBoxUnit extends FLDyRenderUnit {
 
 /// Text
 class FLDyTextUnit extends FLDyRenderUnit {
-  FLDyTextUnit({FLDyTextUnitModel unitModel})
+  FLDyTextUnit({required FLDyTextUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyTextUnitModel),
         super(unitModel: unitModel);
 
@@ -48,24 +48,24 @@ class FLDyTextUnit extends FLDyRenderUnit {
 
 /// RichText
 class FLDyRichTextUnit extends FLDyRenderUnit {
-  FLDyRichTextUnit({FLDyRichTextUnitModel unitModel})
+  FLDyRichTextUnit({required FLDyRichTextUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyRichTextUnitModel),
         super(unitModel: unitModel);
 
   TextSpan buildTextSpan(FLDyTextSpanUnitModel spanUM, BuildContext context) {
-    GestureRecognizer gestureRecognizer;
+    GestureRecognizer? gestureRecognizer;
     if (spanUM.gesture != null) {
-      if (spanUM.gesture.onTap != null) {
+      if (spanUM.gesture?.onTap != null) {
         gestureRecognizer = TapGestureRecognizer()
           ..onTap = () {
-            FLDyActionDispatch.dispatcher
-                .dispatchAction(spanUM.uniqueId, spanUM.gesture.onTap, context);
+            FLDyActionDispatch.dispatcher.dispatchAction(
+                spanUM.uniqueId, spanUM.gesture?.onTap, context);
           };
-      } else if (spanUM.gesture.onLongPress != null) {
+      } else if (spanUM.gesture!.onLongPress != null) {
         gestureRecognizer = LongPressGestureRecognizer()
           ..onLongPress = () {
             FLDyActionDispatch.dispatcher.dispatchAction(
-                spanUM.uniqueId, spanUM.gesture.onLongPress, context);
+                spanUM.uniqueId, spanUM.gesture?.onLongPress, context);
           };
       }
     }
@@ -75,14 +75,15 @@ class FLDyRichTextUnit extends FLDyRenderUnit {
         recognizer: gestureRecognizer,
         semanticsLabel: spanUM.semanticsLabel,
         children: spanUM.children
-            ?.map((spanUM) => buildTextSpan(spanUM, context))
+            ?.map((spanUM) =>
+                buildTextSpan(spanUM as FLDyTextSpanUnitModel, context))
             ?.toList());
   }
 
   @override
   Widget build(BuildContext context) {
     final FLDyRichTextUnitModel rtum = unitModel as FLDyRichTextUnitModel;
-    final textSpan = buildTextSpan(rtum.text, context);
+    final textSpan = buildTextSpan(rtum.text as FLDyTextSpanUnitModel, context);
     final Widget richText = RichText(
       text: textSpan,
     );
@@ -92,7 +93,7 @@ class FLDyRichTextUnit extends FLDyRenderUnit {
 
 /// Image
 class FLDyImageUnit extends FLDyRenderUnit {
-  FLDyImageUnit({FLDyImageUnitModel unitModel})
+  FLDyImageUnit({required FLDyImageUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyImageUnitModel),
         super(unitModel: unitModel);
 
@@ -100,13 +101,13 @@ class FLDyImageUnit extends FLDyRenderUnit {
   Widget build(BuildContext context) {
     final FLDyImageUnitModel ium = unitModel as FLDyImageUnitModel;
     final Widget image = Image(
-      image: ium.imageProvider.type == FLDyImageType.network
+      image: (ium.imageProvider.type == FLDyImageType.network
           ? ium.imageProvider.toNetworkImage()
-          : ium.imageProvider.toAssetImage(),
+          : ium.imageProvider.toAssetImage()) as ImageProvider,
       loadingBuilder: ium.loading != null
           ? (BuildContext context, Widget child,
-              ImageChunkEvent loadingProgress) {
-              return markupUnit(ium.loading);
+              ImageChunkEvent? loadingProgress) {
+              return markupUnit(ium.loading!);
             }
           : null,
       semanticLabel: ium.semanticLabel,
@@ -124,7 +125,7 @@ class FLDyImageUnit extends FLDyRenderUnit {
 
 /// Icon
 class FLDyIconUnit extends FLDyRenderUnit {
-  FLDyIconUnit({FLDyIconUnitModel unitModel})
+  FLDyIconUnit({required FLDyIconUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyIconUnitModel),
         super(unitModel: unitModel);
 
@@ -144,7 +145,7 @@ class FLDyIconUnit extends FLDyRenderUnit {
 
 /// RaisedButton
 class FLDyRaisedButtonUnit extends FLDyRenderUnit {
-  FLDyRaisedButtonUnit({FLDyRaisedButtonUnitModel unitModel})
+  FLDyRaisedButtonUnit({required FLDyRaisedButtonUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyRaisedButtonUnitModel),
         super(unitModel: unitModel);
 
@@ -169,7 +170,7 @@ class FLDyRaisedButtonUnit extends FLDyRenderUnit {
 
 /// FlatButton
 class FLDyFlatButtonUnit extends FLDyRenderUnit {
-  FLDyFlatButtonUnit({FLDyFlatButtonUnitModel unitModel})
+  FLDyFlatButtonUnit({required FLDyFlatButtonUnitModel unitModel})
       : assert(unitModel.runtimeType == FLDyFlatButtonUnitModel),
         super(unitModel: unitModel);
 

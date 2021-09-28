@@ -8,14 +8,14 @@ typedef FLNoticeBarItemBuilder = Widget Function(BuildContext context);
 
 class FLNoticeBar extends StatelessWidget {
   FLNoticeBar({
-    Key key,
+    Key? key,
     this.backgroundColor,
     this.textStyle,
     this.loop = true,
     this.velocity = 0.4,
     this.padding,
     this.textPadding,
-    @required this.text,
+    required this.text,
     this.space,
     this.height = FLMarqueeDefaultHeight,
     this.prefixBuilder,
@@ -25,21 +25,18 @@ class FLNoticeBar extends StatelessWidget {
         super(key: key);
 
   factory FLNoticeBar.notice(
-      {Key key,
-      Color backgroundColor,
-      TextStyle textStyle,
-      bool loop,
-      double velocity,
-      EdgeInsetsGeometry padding,
-      EdgeInsetsGeometry textPadding,
-      String text,
-      double space,
-      double height,
-      Duration delay,
-      FLNoticeBarItemBuilder suffixBuilder}) {
-    velocity ??= 0.4;
-    loop ??= true;
-    height ??= FLMarqueeDefaultHeight;
+      {Key? key,
+      Color? backgroundColor,
+      TextStyle? textStyle,
+      bool loop = true,
+      double velocity = 0.4,
+      EdgeInsetsGeometry? padding,
+      EdgeInsetsGeometry? textPadding,
+      required String text,
+      double? space,
+      double height = FLMarqueeDefaultHeight,
+      Duration? delay,
+      FLNoticeBarItemBuilder? suffixBuilder}) {
     padding ??= EdgeInsets.symmetric(horizontal: 10);
 
     FLNoticeBarItemBuilder prefixBuilder = (BuildContext context) {
@@ -73,23 +70,19 @@ class FLNoticeBar extends StatelessWidget {
   }
 
   factory FLNoticeBar.closable(
-      {Key key,
-      Color backgroundColor,
-      TextStyle textStyle,
-      bool loop,
-      double velocity,
-      EdgeInsetsGeometry padding,
-      EdgeInsetsGeometry textPadding,
-      String text,
-      double space,
-      double height,
-      FLNoticeBarItemBuilder prefixBuilder,
-      Duration delay,
-      @required VoidCallback onPressed}) {
-    assert(onPressed != null);
-    velocity ??= 0.4;
-    loop ??= true;
-    height ??= FLMarqueeDefaultHeight;
+      {Key? key,
+      Color? backgroundColor,
+      TextStyle? textStyle,
+      bool loop = true,
+      double velocity = 0.4,
+      EdgeInsetsGeometry? padding,
+      EdgeInsetsGeometry? textPadding,
+      required String text,
+      double? space,
+      double height = FLMarqueeDefaultHeight,
+      FLNoticeBarItemBuilder? prefixBuilder,
+      Duration? delay,
+      required VoidCallback onPressed}) {
     padding ??= EdgeInsets.symmetric(horizontal: 10);
 
     FLNoticeBarItemBuilder suffixBuilder = (BuildContext context) {
@@ -125,18 +118,18 @@ class FLNoticeBar extends StatelessWidget {
     );
   }
 
-  final Color backgroundColor;
-  final TextStyle textStyle;
+  final Color? backgroundColor;
+  final TextStyle? textStyle;
   final bool loop;
   final double velocity;
-  final EdgeInsetsGeometry padding;
-  final EdgeInsetsGeometry textPadding;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? textPadding;
   final String text;
-  final double space;
+  final double? space;
   final double height;
-  final Duration delay;
-  final FLNoticeBarItemBuilder prefixBuilder;
-  final FLNoticeBarItemBuilder suffixBuilder;
+  final Duration? delay;
+  final FLNoticeBarItemBuilder? prefixBuilder;
+  final FLNoticeBarItemBuilder? suffixBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +143,7 @@ class FLNoticeBar extends StatelessWidget {
     final List<Widget> children = <Widget>[];
 
     if (prefixBuilder != null) {
-      children.add(prefixBuilder(context));
+      children.add(prefixBuilder!(context));
       children.add(SizedBox(width: 5));
     }
 
@@ -168,7 +161,7 @@ class FLNoticeBar extends StatelessWidget {
 
     if (suffixBuilder != null) {
       children.add(SizedBox(width: 5));
-      children.add(suffixBuilder(context));
+      children.add(suffixBuilder!(context));
     }
 
     return Container(
