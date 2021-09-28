@@ -360,8 +360,7 @@ class _FLToastDefaultsWidget extends InheritedWidget {
 
   static FLToastDefaults of(BuildContext context) {
     _FLToastDefaultsWidget defaultsWidget = context
-            .dependOnInheritedWidgetOfExactType(aspect: _FLToastDefaultsWidget)
-        as _FLToastDefaultsWidget;
+        .dependOnInheritedWidgetOfExactType(aspect: _FLToastDefaultsWidget)!;
     return defaultsWidget.defaults;
   }
 }

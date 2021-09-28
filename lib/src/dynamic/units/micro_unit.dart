@@ -12,6 +12,7 @@ class FLDySizedBoxUnit extends FLDyRenderUnit {
       : assert(unitModel.runtimeType == FLDySizedBoxUnitModel),
         super(unitModel: unitModel);
 
+  @override
   Widget build(BuildContext context) {
     FLDySizedBoxUnitModel sbum = unitModel as FLDySizedBoxUnitModel;
     return SizedBox(
