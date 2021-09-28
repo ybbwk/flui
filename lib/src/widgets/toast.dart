@@ -51,7 +51,7 @@ class FLToastProvider extends StatefulWidget {
       : super(key: key);
 
   final FLToastDefaults defaults;
-  final Widget child;
+  final Widget? child;
 
   @override
   State<FLToastProvider> createState() => _FLToastProviderState();
@@ -88,7 +88,7 @@ class _FLToastProviderState extends State<FLToastProvider> {
       initialEntries: [
         OverlayEntry(builder: (BuildContext context) {
           _contextMap[this] = context;
-          return widget.child;
+          return widget.child ?? Container();
         })
       ],
     );
@@ -341,7 +341,7 @@ class _FLToastManager {
     }
 
     _FLToastPack? pack = _toastMap[key];
-    pack?.entry?.remove();
+    pack?.entry.remove();
   }
 }
 

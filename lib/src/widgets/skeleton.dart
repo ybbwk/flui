@@ -123,7 +123,7 @@ class _FLSkeletonState extends State<FLSkeleton>
         animation: _animation,
         builder: (context, child) {
           /// config style
-          final BoxShape shape = widget.shape ?? BoxShape.rectangle;
+          final BoxShape shape = widget.shape;
           final Color color = widget.color ?? const Color(0xFFE8E8E8);
           final Color shimmerColor =
               widget.shimmerColor ?? const Color(0xFFEDEDED);
