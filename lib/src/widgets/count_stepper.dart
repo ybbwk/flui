@@ -26,7 +26,7 @@ class FLCountStepper extends StatefulWidget {
         super(key: key);
 
   /// the controller of count values
-  final FLCountStepperController controller;
+  final FLCountStepperController? controller;
 
   /// value changed callback
   final ValueChanged<num>? onChanged;

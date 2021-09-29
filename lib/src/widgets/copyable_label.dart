@@ -17,7 +17,7 @@ class FLCopyableLabel extends StatelessWidget {
       : super(key: key);
 
   final String copyData;
-  final bool showMenu;
+  final bool? showMenu;
   final Widget child;
   final VoidCallback? afterCopyCallback;
 
@@ -35,7 +35,7 @@ class FLCopyableLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (showMenu) {
+    if (showMenu == true) {
       return FLBubbleMenuWidget(
           child: child,
           onSelected: (value) {

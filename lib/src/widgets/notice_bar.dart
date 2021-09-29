@@ -126,7 +126,7 @@ class FLNoticeBar extends StatelessWidget {
   final EdgeInsetsGeometry? textPadding;
   final String text;
   final double? space;
-  final double height;
+  final double? height;
   final Duration? delay;
   final FLNoticeBarItemBuilder? prefixBuilder;
   final FLNoticeBarItemBuilder? suffixBuilder;

@@ -31,10 +31,10 @@ class FLMarqueeLabel extends StatefulWidget {
   /// The scroll velocity, if it is zero, will not scroll.
   /// The value range is [0-1]
   final double velocity;
-  final bool loop;
-  final double height;
+  final bool? loop;
+  final double? height;
   final EdgeInsetsGeometry? padding;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final Duration? delay;
 
   @override

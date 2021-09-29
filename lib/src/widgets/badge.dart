@@ -22,11 +22,11 @@ class FLBadge extends StatefulWidget {
       required this.child})
       : super(key: key);
 
-  final Color color;
+  final Color? color;
   final FLBadgeShape shape;
-  final TextStyle textStyle;
-  final FLBadgePosition position;
-  final bool hidden;
+  final TextStyle? textStyle;
+  final FLBadgePosition? position;
+  final bool? hidden;
 
   /// Each shape will have a default radius.
   /// If u set this value, the [shape] property will be meaningless.
@@ -101,7 +101,7 @@ class FLBadgeState extends State<FLBadge> {
             child: textChild));
 
     List<Widget> children =
-        widget.hidden ? [widget.child] : [widget.child, badge];
+        widget.hidden == true ? [widget.child] : [widget.child, badge];
 
     return Stack(
         alignment: alignment, overflow: Overflow.visible, children: children);

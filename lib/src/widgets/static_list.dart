@@ -250,7 +250,6 @@ class FLStaticListView extends StatelessWidget {
       case FLStaticListCellAccessoryType.accNone:
       default:
         return null;
-        break;
     }
   }
 
