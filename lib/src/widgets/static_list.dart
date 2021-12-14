@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flui/src/widgets/flat_button.dart';
 import 'package:flui/src/widgets/list_tile.dart';
 
 enum FLStaticListCellType { normal, button, customization }
@@ -193,12 +192,23 @@ class FLStaticListView extends StatelessWidget {
     return Container(
       color: itemData.cellColor,
       height: kStaticButtonHeight,
-      child: FLFlatButton(
-        color: itemData.buttonColor,
-        textColor: itemData.buttonTitleColor,
-        child: Text(itemData.buttonTitle!, textAlign: TextAlign.center),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          primary: itemData.buttonTitleColor,
+          backgroundColor: itemData.buttonColor,
+        ),
+        child: Flex(
+          direction: Axis.horizontal,
+          children: <Widget>[
+            Expanded(
+              child: Text(
+                itemData.buttonTitle!,
+                textAlign: TextAlign.center,
+              ),
+            )
+          ],
+        ),
         onPressed: itemData.onButtonPressed,
-        expanded: true,
       ),
     );
   }

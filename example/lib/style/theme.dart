@@ -21,18 +21,20 @@ ThemeData _buildDarkTheme() {
   );
   final ThemeData base = ThemeData(
     brightness: Brightness.dark,
-    accentColorBrightness: Brightness.dark,
     primaryColor: primaryColor,
     primaryColorDark: const Color(0xFF345B9A),
     appBarTheme: AppBarTheme(
       color: const Color(0xFF202124),
-      textTheme: TextTheme().apply(displayColor: Color(0xFFD1DAFE)),
+      titleTextStyle: TextStyle(
+        color: Color(0xFFD1DAFE),
+      ),
+      toolbarTextStyle: TextStyle(
+        color: Color(0xFFD1DAFE),
+      ),
     ),
     primaryColorLight: secondaryColor,
-    buttonColor: primaryColor,
     indicatorColor: Colors.white,
     toggleableActiveColor: primaryColor,
-    accentColor: secondaryColor,
     canvasColor: const Color(0xFF202124),
     scaffoldBackgroundColor: const Color(0xFF202124),
     backgroundColor: const Color(0xFF202124),
@@ -48,6 +50,9 @@ ThemeData _buildDarkTheme() {
     ),
   );
   return base.copyWith(
+    colorScheme: base.colorScheme.copyWith(
+      secondary: secondaryColor,
+    ),
     textTheme: _buildTextTheme(base.textTheme).apply(
       bodyColor: Color(0xFFEDEDED),
     ),
@@ -55,7 +60,6 @@ ThemeData _buildDarkTheme() {
       displayColor: Color(0xFFEDEDED),
       bodyColor: Color(0xFFEDEDED),
     ),
-    accentTextTheme: _buildTextTheme(base.accentTextTheme),
   );
 }
 
@@ -68,15 +72,12 @@ ThemeData _buildLightTheme() {
   );
   final ThemeData base = ThemeData(
       brightness: Brightness.light,
-      accentColorBrightness: Brightness.dark,
       colorScheme: colorScheme,
       primaryColor: primaryColor,
-      buttonColor: primaryColor,
       indicatorColor: Colors.white,
       toggleableActiveColor: primaryColor,
       splashColor: Colors.white24,
       splashFactory: InkRipple.splashFactory,
-      accentColor: secondaryColor,
       canvasColor: Colors.white,
       scaffoldBackgroundColor: Colors.white,
       backgroundColor: Colors.white,
@@ -90,8 +91,10 @@ ThemeData _buildLightTheme() {
         brightness: Brightness.light,
       ));
   return base.copyWith(
+    colorScheme: base.colorScheme.copyWith(
+      secondary: secondaryColor,
+    ),
     textTheme: _buildTextTheme(base.textTheme),
     primaryTextTheme: _buildTextTheme(base.primaryTextTheme),
-    accentTextTheme: _buildTextTheme(base.accentTextTheme),
   );
 }

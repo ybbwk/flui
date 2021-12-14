@@ -12,7 +12,9 @@ class DyHomeDemoState extends State<DyHomeDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).brightness == Brightness.light ? Color(0xFFF8F8F9) : Color(0xFF323135),
+      backgroundColor: Theme.of(context).brightness == Brightness.light
+          ? Color(0xFFF8F8F9)
+          : Color(0xFF323135),
       appBar: AppBar(
         title: Text("Extend GitHub"),
         centerTitle: true,
@@ -21,7 +23,8 @@ class DyHomeDemoState extends State<DyHomeDemo> {
         jsonObject: HomeJson,
         placeholder: CircularProgressIndicator(
           strokeWidth: 3.0,
-          valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor),
+          valueColor:
+              AlwaysStoppedAnimation(Theme.of(context).colorScheme.secondary),
         ),
       ),
     );

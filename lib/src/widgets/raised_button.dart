@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flui/src/common/defines.dart';
 
+@deprecated
 class FLRaisedButton extends StatelessWidget {
   FLRaisedButton({
     Key? key,

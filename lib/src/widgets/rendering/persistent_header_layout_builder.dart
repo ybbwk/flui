@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter/rendering.dart';
 import 'persistent_header_constraints.dart';
 

@@ -11,21 +11,23 @@ void main() {
         child: Container(),
         bottomWidget: BottomNavigationBar(items: [
           BottomNavigationBarItem(
-              icon: FLBadge(
-                child: Icon(iconData),
-                hidden: false,
-                shape: FLBadgeShape.circle,
-                text: '2',
-              ),
-              title: Text('home')),
+            icon: FLBadge(
+              child: Icon(iconData),
+              hidden: false,
+              shape: FLBadgeShape.circle,
+              text: '2',
+            ),
+            label: 'home',
+          ),
           BottomNavigationBarItem(
-              icon: FLBadge(
-                child: Icon(iconData),
-                hidden: false,
-                shape: FLBadgeShape.circle,
-                text: '2',
-              ),
-              title: Text('home')),
+            icon: FLBadge(
+              child: Icon(iconData),
+              hidden: false,
+              shape: FLBadgeShape.circle,
+              text: '2',
+            ),
+            label: 'home',
+          ),
         ])));
 
     expect(find.byIcon(iconData), findsNWidgets(2));

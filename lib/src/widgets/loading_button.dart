@@ -81,7 +81,7 @@ class FLLoadingButtonState extends State<FLLoadingButton> {
   Widget build(BuildContext context) {
     // color
     final Color indColor =
-        widget.indicatorColor ?? Theme.of(context).accentColor;
+        widget.indicatorColor ?? Theme.of(context).colorScheme.secondary;
     // indicator size
     double scaleFactor;
     if (widget.indicatorSize != null && widget.indicatorSize! > 0) {

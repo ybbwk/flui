@@ -31,7 +31,6 @@ import 'pages/static_list_page.dart';
 import 'dynamic_page.dart';
 import 'pages/dyalign_page.dart';
 import 'pages/dylistview_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'pages/dydemo_home_page.dart';
@@ -43,7 +42,7 @@ void main() {
   runApp(MyApp());
   if (Platform.isAndroid) {
     SystemUiOverlayStyle systemUiOverlayStyle =
-    SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
   Util.initialize();
@@ -127,53 +126,52 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         textDirection: Util.textDirection);
 
     return MaterialApp(
-        title: 'FLUI',
-        debugShowCheckedModeBanner: false,
-        themeMode: themeMode,
-        theme: kLightTheme,
-        darkTheme: kDarkTheme,
-        routes: {
-          HomeTab.routeName: (context) => HomeTab(),
-          InputPage.routeName: (context) => InputPage(),
-          EmptyPage.routeName: (context) => EmptyPage(),
-          LoadingEmptyPage.routeName: (context) => LoadingEmptyPage(),
-          HintsEmptyPage.routeName: (context) => HintsEmptyPage(),
-          HintsActionEmptyPage.routeName: (context) => HintsActionEmptyPage(),
-          ImageHintsEmptyPage.routeName: (context) => ImageHintsEmptyPage(),
-          BadgePage.routeName: (context) => BadgePage(),
-          LabelPage.routeName: (context) => LabelPage(),
-          NoticeBarPage.routeName: (context) => NoticeBarPage(),
-          SkeletonPage.routeName: (context) => SkeletonPage(),
-          ActionSheetPage.routeName: (context) => ActionSheetPage(),
-          AppBarPage.routeName: (context) => AppBarPage(),
-          StaticListViewPage.routeName: (context) => StaticListViewPage(),
-          ButtonPage.routeName: (context) => ButtonPage(),
-          ToastPage.routeName: (context) => ToastPage(),
-          BubblePage.routeName: (context) => BubblePage(),
-          AvatarPage.routeName: (context) => AvatarPage(),
-          CountStepperPage.routeName: (context) => CountStepperPage(),
-          PersistentHeaderPage.routeName: (context) => PersistentHeaderPage(),
-          ListPage.routeName: (context) => ListPage(),
-          // dynamic demo pages
-          AlignLayoutPage.routeName: (context) => AlignLayoutPage(),
-          ContainerEffectPage.routeName: (context) => ContainerEffectPage(),
-          DyListPage.routeName: (context) => DyListPage(),
-          StackPage.routeName: (context) => StackPage(),
-          DyRichTextPage.routeName: (context) => DyRichTextPage(),
-          DyButtonPage.routeName: (context) => DyButtonPage(),
-          DyImagePage.routeName: (context) => DyImagePage(),
-          DyHomeDemo.routeName: (context) => DyHomeDemo(),
-          DyDetailDemo.routeName: (context) => DyDetailDemo()
-        },
-        builder: (BuildContext context, Widget child) {
-          return FLToastProvider(
-              defaults: toastDefaults,
-              child: Directionality(
-                textDirection: Util.textDirection,
-                child: child,
-              )
-          );
-        },
+      title: 'FLUI',
+      debugShowCheckedModeBanner: false,
+      themeMode: themeMode,
+      theme: kLightTheme,
+      darkTheme: kDarkTheme,
+      routes: {
+        HomeTab.routeName: (context) => HomeTab(),
+        InputPage.routeName: (context) => InputPage(),
+        EmptyPage.routeName: (context) => EmptyPage(),
+        LoadingEmptyPage.routeName: (context) => LoadingEmptyPage(),
+        HintsEmptyPage.routeName: (context) => HintsEmptyPage(),
+        HintsActionEmptyPage.routeName: (context) => HintsActionEmptyPage(),
+        ImageHintsEmptyPage.routeName: (context) => ImageHintsEmptyPage(),
+        BadgePage.routeName: (context) => BadgePage(),
+        LabelPage.routeName: (context) => LabelPage(),
+        NoticeBarPage.routeName: (context) => NoticeBarPage(),
+        SkeletonPage.routeName: (context) => SkeletonPage(),
+        ActionSheetPage.routeName: (context) => ActionSheetPage(),
+        AppBarPage.routeName: (context) => AppBarPage(),
+        StaticListViewPage.routeName: (context) => StaticListViewPage(),
+        ButtonPage.routeName: (context) => ButtonPage(),
+        ToastPage.routeName: (context) => ToastPage(),
+        BubblePage.routeName: (context) => BubblePage(),
+        AvatarPage.routeName: (context) => AvatarPage(),
+        CountStepperPage.routeName: (context) => CountStepperPage(),
+        PersistentHeaderPage.routeName: (context) => PersistentHeaderPage(),
+        ListPage.routeName: (context) => ListPage(),
+        // dynamic demo pages
+        AlignLayoutPage.routeName: (context) => AlignLayoutPage(),
+        ContainerEffectPage.routeName: (context) => ContainerEffectPage(),
+        DyListPage.routeName: (context) => DyListPage(),
+        StackPage.routeName: (context) => StackPage(),
+        DyRichTextPage.routeName: (context) => DyRichTextPage(),
+        DyButtonPage.routeName: (context) => DyButtonPage(),
+        DyImagePage.routeName: (context) => DyImagePage(),
+        DyHomeDemo.routeName: (context) => DyHomeDemo(),
+        DyDetailDemo.routeName: (context) => DyDetailDemo()
+      },
+      builder: (BuildContext context, Widget child) {
+        return FLToastProvider(
+            defaults: toastDefaults,
+            child: Directionality(
+              textDirection: Util.textDirection,
+              child: child,
+            ));
+      },
     );
   }
 }
@@ -200,15 +198,15 @@ class _HomeTabState extends State<HomeTab> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.apps),
-            title: Text('widgets'),
+            label: 'widgets',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.aspect_ratio),
-            title: Text('dynamic'),
+            label: 'dynamic',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.info_outline),
-            title: Text('about'),
+            label: 'about',
           )
         ],
         currentIndex: _currentIndex,

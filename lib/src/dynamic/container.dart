@@ -10,7 +10,7 @@ class FLDyContainer extends StatefulWidget {
   FLDyContainer({
     Key? key,
     required this.placeholder,
-    required this.jsonObject,
+    this.jsonObject,
   }) : super(key: key) {
     FLDyLogger.log('initial dynamic container');
     FLDyLogger.logStartTime();

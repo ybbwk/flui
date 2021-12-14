@@ -1,5 +1,4 @@
 import 'package:flui/src/widgets/loading_button.dart';
-import 'package:flui/src/widgets/flat_button.dart';
 import 'package:flui/src/widgets/raised_button.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
@@ -14,10 +13,16 @@ void main() {
     await tester.pumpWidget(TestContainer(
         child: Container(
       width: width,
-      child: FLFlatButton(
+      child: TextButton(
         key: _buttonKey,
-        expanded: true,
-        child: Text('flat button'),
+        child: Flex(
+          direction: Axis.horizontal,
+          children: <Widget>[
+            Expanded(
+              child: Text('flat button'),
+            ),
+          ],
+        ),
         onPressed: () {},
       ),
     )));
@@ -29,11 +34,14 @@ void main() {
 
     final IconData iconData = Icons.access_alarm;
     final textFinder = find.text('alarm');
-    final iconFinder = find.widgetWithIcon(FlatButton, iconData);
+    final iconFinder = find.widgetWithIcon(TextButton, iconData);
 
     await tester.pumpWidget(TestContainer(
-      child: FLFlatButton.icon(
-          onPressed: () {}, icon: Icon(iconData), label: Text('alarm')),
+      child: TextButton.icon(
+        onPressed: () {},
+        icon: Icon(iconData),
+        label: Text('alarm'),
+      ),
     ));
 
     expect(textFinder, findsOneWidget);
@@ -64,7 +72,7 @@ void main() {
 
     final IconData iconData = Icons.access_alarm;
     final tFinder = find.text('alarm');
-    final iconFinder = find.widgetWithIcon(RaisedButton, iconData);
+    final iconFinder = find.widgetWithIcon(ElevatedButton, iconData);
 
     await tester.pumpWidget(TestContainer(
       child: FLRaisedButton.icon(

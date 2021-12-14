@@ -11,7 +11,7 @@ class FLSkeleton extends StatefulWidget {
       this.padding,
       this.color,
       this.shimmerColor,
-      required this.width,
+      this.width,
       required this.height,
       required this.margin,
       this.borderRadius,
@@ -25,7 +25,7 @@ class FLSkeleton extends StatefulWidget {
   final EdgeInsetsGeometry? padding;
   final Color? color;
   final Color? shimmerColor;
-  final double width;
+  final double? width;
   final double height;
   final EdgeInsetsGeometry margin;
   final BorderRadiusGeometry? borderRadius;
@@ -143,7 +143,7 @@ class _FLSkeletonState extends State<FLSkeleton>
                       _animation.value + 0.4
                     ])
               : null;
-          final double width = widget.type == FLSkeletonAnimationType.shimmer
+          final double? width = widget.type == FLSkeletonAnimationType.shimmer
               ? widget.width
               : _animation.value;
           final decColor =

@@ -12,10 +12,9 @@ class DyButtonPageState extends State<DyButtonPage> {
   @override
   void initState() {
     super.initState();
-    FLDyActionDispatch.dispatcher.registerActionHandler(
-      'custom-handler',
-      (BuildContext context, String uniqueId, List args) {
-        FLToast.success(text: 'click $uniqueId');
+    FLDyActionDispatch.dispatcher.registerActionHandler('custom-handler',
+        (BuildContext context, String uniqueId, List args) {
+      FLToast.success(text: 'click $uniqueId');
     });
   }
 
@@ -35,7 +34,8 @@ class DyButtonPageState extends State<DyButtonPage> {
         jsonObject: ButtonJson,
         placeholder: CircularProgressIndicator(
           strokeWidth: 3.0,
-          valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor),
+          valueColor:
+              AlwaysStoppedAnimation(Theme.of(context).colorScheme.secondary),
         ),
       ),
     );

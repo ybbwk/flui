@@ -22,8 +22,10 @@ class _HintsActionEmptyPageState extends State<HintsActionEmptyPage> {
           actionButton: Container(
             width: 150,
             height: 35,
-            child: RaisedButton(
-              textColor: Colors.white,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                onPrimary: Colors.white,
+              ),
               child: Text('Retry'),
               onPressed: () => print('retry'),
             ),

@@ -14,7 +14,8 @@ class StackPageState extends State<StackPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.light
-          ? Color(0xFFECEFF1) : null,
+          ? Color(0xFFECEFF1)
+          : null,
       appBar: AppBar(
         title: Text('Stack'),
       ),
@@ -22,7 +23,8 @@ class StackPageState extends State<StackPage> {
         jsonObject: StackJson,
         placeholder: CircularProgressIndicator(
           strokeWidth: 3.0,
-          valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor),
+          valueColor:
+              AlwaysStoppedAnimation(Theme.of(context).colorScheme.secondary),
         ),
       ),
     );

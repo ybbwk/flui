@@ -60,7 +60,8 @@ class FLEmptyContainerState extends State<FLEmptyContainer> {
     if (widget.customLoadingWidget == null && widget.showLoading) {
       Widget loading = CircularProgressIndicator(
         strokeWidth: 3.0,
-        valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor),
+        valueColor:
+            AlwaysStoppedAnimation(Theme.of(context).colorScheme.secondary),
       );
       _addChildAndSpacingIfNeeded(children, loading);
     }

@@ -20,7 +20,8 @@ class DyImagePageState extends State<DyImagePage> {
         jsonObject: ImageJson,
         placeholder: CircularProgressIndicator(
           strokeWidth: 3.0,
-          valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor),
+          valueColor:
+              AlwaysStoppedAnimation(Theme.of(context).colorScheme.secondary),
         ),
       ),
     );

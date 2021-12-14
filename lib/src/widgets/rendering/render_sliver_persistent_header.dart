@@ -1,8 +1,6 @@
 import 'package:flui/src/widgets/persistent_header.dart';
 import 'package:flui/src/widgets/rendering/persistent_header_constraints.dart';
 import 'package:flui/src/widgets/rendering/persistent_header_layout_builder.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'dart:math' as math;
 

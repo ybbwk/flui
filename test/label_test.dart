@@ -1,8 +1,6 @@
 import 'package:flui/flui.dart';
-import 'package:flui/src/widgets/copyable_label.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'test_common.dart';
 
 void main() {

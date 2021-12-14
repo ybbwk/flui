@@ -64,20 +64,26 @@ class _AppBarPageState extends State<AppBarPage> {
           mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             inset,
-            FLRaisedButton(
-              textColor: Colors.white,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                onPrimary: Colors.white,
+              ),
               child: Text(subStr),
               onPressed: () => setState(() => _showSubTitle = !_showSubTitle),
             ),
             inset,
-            FLRaisedButton(
-              textColor: Colors.white,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                onPrimary: Colors.white,
+              ),
               child: Text(loadStr),
               onPressed: () => setState(() => _showLoading = !_showLoading),
             ),
             inset,
-            FLRaisedButton(
-              textColor: Colors.white,
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                onPrimary: Colors.white,
+              ),
               child: Text(accStr),
               onPressed: () => setState(() => _showAccessory = !_showAccessory),
             ),

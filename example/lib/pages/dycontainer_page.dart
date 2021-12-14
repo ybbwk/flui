@@ -19,7 +19,8 @@ class ContainerEffectPageState extends State<ContainerEffectPage> {
         jsonObject: ContainerEffectJson,
         placeholder: CircularProgressIndicator(
           strokeWidth: 3.0,
-          valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor),
+          valueColor:
+              AlwaysStoppedAnimation(Theme.of(context).colorScheme.secondary),
         ),
       ),
     );

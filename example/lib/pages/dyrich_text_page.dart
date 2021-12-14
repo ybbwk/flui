@@ -15,11 +15,11 @@ class DyRichTextPageState extends State<DyRichTextPage> {
     super.initState();
     FLDyActionDispatch.dispatcher.registerActionHandler('press-link',
         (BuildContext context, String uniqueId, List args) {
-          String siteUrl = args.first;
-          canLaunch(siteUrl).then((canOpen) {
-            launch(siteUrl, forceSafariVC: false);
-          });
-        });
+      String siteUrl = args.first;
+      canLaunch(siteUrl).then((canOpen) {
+        launch(siteUrl, forceSafariVC: false);
+      });
+    });
   }
 
   @override
@@ -38,7 +38,8 @@ class DyRichTextPageState extends State<DyRichTextPage> {
         jsonObject: RichTextJson,
         placeholder: CircularProgressIndicator(
           strokeWidth: 3.0,
-          valueColor: AlwaysStoppedAnimation(Theme.of(context).accentColor),
+          valueColor:
+              AlwaysStoppedAnimation(Theme.of(context).colorScheme.secondary),
         ),
       ),
     );

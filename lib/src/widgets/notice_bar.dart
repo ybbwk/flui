@@ -41,7 +41,7 @@ class FLNoticeBar extends StatelessWidget {
 
     FLNoticeBarItemBuilder prefixBuilder = (BuildContext context) {
       final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-      final Color accent = Theme.of(context).accentColor;
+      final Color accent = Theme.of(context).colorScheme.secondary;
       final Color textColor = isDarkMode ? accent : FLNoticeBarTintColor;
       final TextStyle marqueeStyle = textStyle ?? TextStyle(color: textColor);
       final double size = marqueeStyle.fontSize ?? height / 2.0;
@@ -87,7 +87,7 @@ class FLNoticeBar extends StatelessWidget {
 
     FLNoticeBarItemBuilder suffixBuilder = (BuildContext context) {
       final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-      final Color accent = Theme.of(context).accentColor;
+      final Color accent = Theme.of(context).colorScheme.secondary;
       final Color textColor = isDarkMode ? accent : FLNoticeBarTintColor;
       final TextStyle marqueeStyle = textStyle ?? TextStyle(color: textColor);
       final double size = marqueeStyle.fontSize ?? height / 2.0;
@@ -134,7 +134,7 @@ class FLNoticeBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final Color accent = Theme.of(context).accentColor;
+    final Color accent = Theme.of(context).colorScheme.secondary;
     final Color barBackgroundColor = backgroundColor ??
         (isDarkMode ? accent.withOpacity(0.2) : FLNoticeBarBackgroundColor);
     final Color textColor = isDarkMode ? accent : FLNoticeBarTintColor;

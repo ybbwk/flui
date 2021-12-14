@@ -46,8 +46,10 @@ class _ActionSheetPageState extends State<ActionSheetPage> {
               SizedBox(height: 20),
               Container(
                 width: 220,
-                child: FLRaisedButton(
-                  textColor: Colors.white,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                  ),
                   onPressed: () {
                     showFLBottomSheet(
                         context: context,
@@ -74,8 +76,10 @@ class _ActionSheetPageState extends State<ActionSheetPage> {
               SizedBox(height: 20),
               Container(
                 width: 220,
-                child: FLRaisedButton(
-                  textColor: Colors.white,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                  ),
                   onPressed: () {
                     showFLBottomSheet(
                         context: context,
@@ -101,8 +105,10 @@ class _ActionSheetPageState extends State<ActionSheetPage> {
               SizedBox(height: 20),
               Container(
                 width: 220,
-                child: FLRaisedButton(
-                  textColor: Colors.white,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    onPrimary: Colors.white,
+                  ),
                   child: Text('OperationSheet'),
                   onPressed: () {
                     showFLBottomSheet(
