@@ -118,7 +118,7 @@ class FLStaticListView extends StatelessWidget {
     this.padding,
     this.separatorBuilder,
     required this.sections,
-  })  : assert(sections != null && sections.length > 0),
+  })  : assert(sections.length > 0),
         super(key: key);
 
   final bool shrinkWrap;

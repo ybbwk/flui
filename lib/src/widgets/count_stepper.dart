@@ -105,7 +105,7 @@ class _FLCountStepperState extends State<FLCountStepper> {
 
   void _syncValueAndInput() {
     String text = _inputController.value.text;
-    if (text == null || text.trim().length == 0) {
+    if (text.trim().length == 0) {
       num regVal = math.min(_controller!.max, math.max(0, _controller!.min));
       text = '$regVal';
     }
@@ -190,7 +190,7 @@ class _FLCountStepperState extends State<FLCountStepper> {
         enabled: !widget.disableInput,
         keyboardType: TextInputType.number,
         inputFormatters: [
-          WhitelistingTextInputFormatter(RegExp("[-0-9]")),
+          FilteringTextInputFormatter.allow(RegExp("[-0-9]")),
           LengthLimitingTextInputFormatter(_maxLength),
         ],
         decoration: InputDecoration(
@@ -318,7 +318,7 @@ class FLFloatingCountStepper extends StatefulWidget {
     this.labelWidth = _kDefaultFloatingTextWidth,
     this.labelTextStyle,
     this.actionColor,
-  })  : assert(controller != null && controller.min == 0),
+  })  : assert(controller.min == 0),
         super(key: key);
 
   /// the controller of count values
@@ -415,7 +415,7 @@ class _FLFloatingCountStepperState extends State<FLFloatingCountStepper>
   void _syncValueAndInput() {
     if (_controller!.value.compareTo(num.parse(_inputController.text)) != 0) {
       String text = _inputController.value.text;
-      if (text == null || text.trim().length == 0) {
+      if (text.trim().length == 0) {
         num regVal = math.min(_controller!.max, math.max(0, _controller!.min));
         text = '$regVal';
       }
