@@ -39,7 +39,7 @@ class FLFlatButton extends StatelessWidget {
   final Color? splashColor;
   final Brightness? colorBrightness;
   final EdgeInsetsGeometry? padding;
-  final ShapeBorder? shape;
+  final OutlinedBorder? shape;
   final Clip clipBehavior;
   final FocusNode? focusNode;
   final MaterialTapTargetSize? materialTapTargetSize;
@@ -61,7 +61,7 @@ class FLFlatButton extends StatelessWidget {
     Color splashColor,
     Brightness colorBrightness,
     EdgeInsetsGeometry padding,
-    ShapeBorder shape,
+    OutlinedBorder shape,
     Clip clipBehavior,
     FocusNode focusNode,
     MaterialTapTargetSize materialTapTargetSize,
@@ -84,25 +84,21 @@ class FLFlatButton extends StatelessWidget {
           )
         : child;
 
-    return FlatButton(
-        onPressed: onPressed,
-        onHighlightChanged: onHighlightChanged,
-        textTheme: textTheme,
-        textColor: textColor,
-        disabledTextColor: disabledTextColor,
-        color: color,
-        disabledColor: disabledColor,
-        hoverColor: hoverColor,
-        focusColor: focusColor,
-        highlightColor: highlightColor,
-        splashColor: splashColor,
-        colorBrightness: colorBrightness,
+    return TextButton(
+      onPressed: onPressed,
+      clipBehavior: clipBehavior,
+      focusNode: focusNode,
+      style: TextButton.styleFrom(
+        foregroundColor: textColor,
+        backgroundColor: color,
+        disabledForegroundColor: disabledTextColor,
+        disabledBackgroundColor: disabledColor,
         padding: padding,
+        tapTargetSize: materialTapTargetSize,
         shape: shape,
-        clipBehavior: clipBehavior,
-        focusNode: focusNode,
-        materialTapTargetSize: materialTapTargetSize,
-        child: buttonChild);
+      ),
+      child: buttonChild,
+    );
   }
 }
 
@@ -123,7 +119,7 @@ class _FLFlatButtonWithIcon extends FLFlatButton
     Color? splashColor,
     Brightness? colorBrightness,
     EdgeInsetsGeometry? padding,
-    ShapeBorder? shape,
+    OutlinedBorder? shape,
     Clip? clipBehavior,
     FocusNode? focusNode,
     MaterialTapTargetSize? materialTapTargetSize,
@@ -178,24 +174,20 @@ class _FLFlatButtonWithIcon extends FLFlatButton
             children: children,
           );
 
-    return FlatButton(
-        onPressed: onPressed,
-        onHighlightChanged: onHighlightChanged,
-        textTheme: textTheme,
-        textColor: textColor,
-        disabledTextColor: disabledTextColor,
-        color: color,
-        disabledColor: disabledColor,
-        focusColor: focusColor,
-        hoverColor: hoverColor,
-        highlightColor: highlightColor,
-        splashColor: splashColor,
-        colorBrightness: colorBrightness,
+    return TextButton(
+      onPressed: onPressed,
+      clipBehavior: clipBehavior,
+      focusNode: focusNode,
+      style: TextButton.styleFrom(
+        foregroundColor: textColor,
+        backgroundColor: color,
+        disabledForegroundColor: disabledTextColor,
+        disabledBackgroundColor: disabledColor,
         padding: padding,
+        tapTargetSize: materialTapTargetSize,
         shape: shape,
-        clipBehavior: clipBehavior,
-        focusNode: focusNode,
-        materialTapTargetSize: materialTapTargetSize,
-        child: buttonChild);
+      ),
+      child: buttonChild,
+    );
   }
 }

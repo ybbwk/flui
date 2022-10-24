@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flui/src/common/defines.dart';
 
@@ -49,7 +51,7 @@ class FLRaisedButton extends StatelessWidget {
   final double? hoverElevation;
   final double? highlightElevation;
   final double? disabledElevation;
-  final ShapeBorder? shape;
+  final OutlinedBorder? shape;
   final EdgeInsetsGeometry? padding;
   final Clip? clipBehavior;
   final FocusNode? focusNode;
@@ -75,7 +77,7 @@ class FLRaisedButton extends StatelessWidget {
     double elevation,
     double highlightElevation,
     double disabledElevation,
-    ShapeBorder shape,
+    OutlinedBorder shape,
     EdgeInsetsGeometry padding,
     Clip clipBehavior,
     FocusNode focusNode,
@@ -100,30 +102,21 @@ class FLRaisedButton extends StatelessWidget {
           )
         : child;
 
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: onPressed,
-      onHighlightChanged: onHighlightChanged,
-      textTheme: textTheme,
-      textColor: textColor,
-      disabledTextColor: disabledTextColor,
-      color: color,
-      focusColor: focusColor,
-      hoverColor: hoverColor,
-      disabledColor: disabledColor,
-      highlightColor: highlightColor,
-      splashColor: splashColor,
-      colorBrightness: colorBrightness,
-      elevation: elevation,
-      focusElevation: focusElevation,
-      hoverElevation: hoverElevation,
-      highlightElevation: highlightElevation,
-      disabledElevation: disabledElevation,
-      shape: shape,
-      padding: padding,
       clipBehavior: clipBehavior ?? Clip.none,
       focusNode: focusNode,
-      materialTapTargetSize: materialTapTargetSize,
-      animationDuration: animationDuration,
+      style: ElevatedButton.styleFrom(
+        foregroundColor: textColor,
+        disabledForegroundColor: disabledTextColor,
+        backgroundColor: color,
+        disabledBackgroundColor: disabledColor,
+        shape: shape,
+        padding: padding,
+        elevation: elevation,
+        tapTargetSize: materialTapTargetSize,
+        animationDuration: animationDuration,
+      ),
       child: buttonChild,
     );
   }
@@ -150,7 +143,7 @@ class _FLRaisedButtonWithIcon extends FLRaisedButton
     double? elevation,
     double? highlightElevation,
     double? disabledElevation,
-    ShapeBorder? shape,
+    OutlinedBorder? shape,
     EdgeInsetsGeometry? padding,
     Clip? clipBehavior,
     FocusNode? focusNode,
@@ -209,28 +202,21 @@ class _FLRaisedButtonWithIcon extends FLRaisedButton
             children: children,
           );
 
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: onPressed,
-      onHighlightChanged: onHighlightChanged,
-      textTheme: textTheme,
-      textColor: textColor,
-      disabledTextColor: disabledTextColor,
-      color: color,
-      hoverColor: hoverColor,
-      focusColor: focusColor,
-      disabledColor: disabledColor,
-      highlightColor: highlightColor,
-      splashColor: splashColor,
-      colorBrightness: colorBrightness,
-      elevation: elevation,
-      highlightElevation: highlightElevation,
-      disabledElevation: disabledElevation,
-      shape: shape,
-      padding: padding,
       clipBehavior: clipBehavior ?? Clip.none,
       focusNode: focusNode,
-      materialTapTargetSize: materialTapTargetSize,
-      animationDuration: animationDuration,
+      style: ElevatedButton.styleFrom(
+        foregroundColor: textColor,
+        disabledForegroundColor: disabledTextColor,
+        backgroundColor: color,
+        disabledBackgroundColor: disabledColor,
+        shape: shape,
+        padding: padding,
+        elevation: elevation,
+        tapTargetSize: materialTapTargetSize,
+        animationDuration: animationDuration,
+      ),
       child: buttonChild,
     );
   }
