@@ -256,7 +256,7 @@ Function _showToast(String text,
     _toastManager.dismissAllToast(immediately: true);
   }
 
-  Overlay.of(context)?.insert(entry);
+  Overlay.of(context).insert(entry);
   _toastManager.addToast(_FLToastPack(key: key, entry: entry));
   SemanticsService.tooltip(text);
 

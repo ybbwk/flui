@@ -14,6 +14,7 @@ class FLThemeColors {
   static const String hoverColor = 'hoverColor';
   static const String highlightColor = 'highlightColor';
   static const String splashColor = 'splashColor';
+  @deprecated
   static const String selectedRowColor = 'selectedRowColor';
   static const String unselectedWidgetColor = 'unselectedWidgetColor';
   static const String disabledColor = 'disabledColor';
@@ -27,6 +28,7 @@ class FLThemeColors {
   static const String indicatorColor = 'indicatorColor';
   static const String hintColor = 'hintColor';
   static const String errorColor = 'errorColor';
+  @deprecated
   static const String toggleableActiveColor = 'toggleableActiveColor';
 }
 
@@ -77,7 +79,7 @@ class FLThemeTool {
         case FLThemeColors.scaffoldBackgroundColor:
           return theme.scaffoldBackgroundColor;
         case FLThemeColors.bottomAppBarColor:
-          return theme.bottomAppBarColor;
+          return theme.bottomAppBarTheme.color;
         case FLThemeColors.cardColor:
           return theme.cardColor;
         case FLThemeColors.dividerColor:
@@ -105,7 +107,7 @@ class FLThemeTool {
         case FLThemeColors.textSelectionHandleColor:
           return theme.textSelectionTheme.selectionHandleColor;
         case FLThemeColors.backgroundColor:
-          return theme.backgroundColor;
+          return theme.colorScheme.background;
         case FLThemeColors.dialogBackgroundColor:
           return theme.dialogBackgroundColor;
         case FLThemeColors.indicatorColor:
@@ -113,7 +115,7 @@ class FLThemeTool {
         case FLThemeColors.hintColor:
           return theme.hintColor;
         case FLThemeColors.errorColor:
-          return theme.errorColor;
+          return theme.colorScheme.error;
         case FLThemeColors.toggleableActiveColor:
           return theme.toggleableActiveColor;
         default:
@@ -131,40 +133,40 @@ class FLThemeTool {
       switch (descriptor) {
         case FLThemeTextStyles.display4:
         case FLThemeTextStyles.headline1:
-          return textTheme.headline1;
+          return textTheme.displayLarge;
         case FLThemeTextStyles.display3:
         case FLThemeTextStyles.headline2:
-          return textTheme.headline2;
+          return textTheme.displayMedium;
         case FLThemeTextStyles.display2:
         case FLThemeTextStyles.headline3:
-          return textTheme.headline3;
+          return textTheme.displaySmall;
         case FLThemeTextStyles.display1:
         case FLThemeTextStyles.headline4:
-          return textTheme.headline4;
+          return textTheme.headlineMedium;
         case FLThemeTextStyles.headline:
         case FLThemeTextStyles.headline5:
-          return textTheme.headline5;
+          return textTheme.headlineSmall;
         case FLThemeTextStyles.title:
         case FLThemeTextStyles.headline6:
-          return textTheme.headline6;
+          return textTheme.titleLarge;
         case FLThemeTextStyles.subhead:
         case FLThemeTextStyles.subtitle1:
-          return textTheme.subtitle1;
+          return textTheme.titleMedium;
         case FLThemeTextStyles.body2:
         case FLThemeTextStyles.bodyText1:
-          return textTheme.bodyText1;
+          return textTheme.bodyLarge;
         case FLThemeTextStyles.body1:
         case FLThemeTextStyles.bodyText2:
-          return textTheme.bodyText2;
+          return textTheme.bodyMedium;
         case FLThemeTextStyles.caption:
-          return textTheme.caption;
+          return textTheme.bodySmall;
         case FLThemeTextStyles.button:
-          return textTheme.button;
+          return textTheme.labelLarge;
         case FLThemeTextStyles.subtitle:
         case FLThemeTextStyles.subtitle2:
-          return textTheme.subtitle2;
+          return textTheme.titleSmall;
         case FLThemeTextStyles.overline:
-          return textTheme.overline;
+          return textTheme.labelSmall;
         default:
           return null;
       }

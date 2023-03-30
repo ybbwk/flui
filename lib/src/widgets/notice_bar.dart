@@ -21,8 +21,7 @@ class FLNoticeBar extends StatelessWidget {
     this.prefixBuilder,
     this.suffixBuilder,
     this.delay,
-  })  : assert(text != null),
-        super(key: key);
+  }) : super(key: key);
 
   factory FLNoticeBar.notice(
       {Key? key,

@@ -78,19 +78,16 @@ class FLDyActionDispatch {
   }
 
   void registerActionHandler(String action, FLDyActionHandler handler) {
-    assert(action != null && handler != null);
     _customActionMap[action] = handler;
   }
 
   void removeActionHandler(String action) {
-    assert(action != null);
     _customActionMap.remove(action);
   }
 
   void _dispatchCustomAction(
       String uniqueId, FLDyAction action, BuildContext context) {
     FLDyActionHandler handler = _customActionMap[action.action];
-    if (handler == null) return;
     handler(context, uniqueId, action.args);
   }
 

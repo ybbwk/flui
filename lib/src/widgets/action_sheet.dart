@@ -42,8 +42,7 @@ class FLCupertinoActionSheet extends StatelessWidget {
       this.borderRadius,
       required this.child,
       this.cancelButton})
-      : assert(child != null),
-        super(key: key);
+      : super(key: key);
 
   final Color? backgroundColor;
   final Widget child;

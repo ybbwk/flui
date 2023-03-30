@@ -29,9 +29,7 @@ class FLAutoComplete<T> extends StatefulWidget {
       this.hideWhenUnfocus = true,
       required this.itemBuilder,
       required this.child})
-      : assert(itemBuilder != null),
-        assert(child != null),
-        super(key: key);
+      : super(key: key);
 
   @override
   State<FLAutoComplete> createState() => FLAutoCompleteState();
@@ -107,7 +105,7 @@ class FLAutoCompleteState<T> extends State<FLAutoComplete> {
           ),
         );
       });
-      Overlay.of(context)!.insert(_suggestionsEntry!);
+      Overlay.of(context).insert(_suggestionsEntry!);
       _display = true;
     } else {
       _suggestionsEntry!.markNeedsBuild();

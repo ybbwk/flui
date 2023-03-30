@@ -360,8 +360,8 @@ class _FLRawGradientButton extends MaterialButton {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     final ButtonThemeData buttonTheme = ButtonTheme.of(context);
-    final TextStyle textStyle =
-        theme.textTheme.button!.copyWith(color: buttonTheme.getTextColor(this));
+    final TextStyle textStyle = theme.textTheme.labelLarge!
+        .copyWith(color: buttonTheme.getTextColor(this));
     final double currentElevation = (enabled ? elevation : disabledElevation) ??
         buttonTheme.getElevation(this);
 

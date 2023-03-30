@@ -26,8 +26,7 @@ class FLAppBarTitle extends StatelessWidget {
       this.loadingPosition = FLAppBarPosition.left,
       this.customAccessoryWidget,
       this.accessoryPosition = FLAppBarPosition.right})
-      : assert(title != null),
-        super(key: key);
+      : super(key: key);
 
   final String title;
   final TextStyle? titleStyle;
@@ -41,15 +40,13 @@ class FLAppBarTitle extends StatelessWidget {
 
   Widget _buildTitles() {
     List<Widget> titles = [];
-    if (title != null) {
-      double tSize = layout == FLAppBarTitleLayout.horizontal
-          ? _kDefaultTitleSize
-          : _kDefaultVerticalTitleSize;
-      TextStyle tStyle =
-          titleStyle ?? TextStyle(fontWeight: FontWeight.bold, fontSize: tSize);
-      Text titleWidget = Text(title, style: tStyle);
-      titles.add(titleWidget);
-    }
+    double tSize = layout == FLAppBarTitleLayout.horizontal
+        ? _kDefaultTitleSize
+        : _kDefaultVerticalTitleSize;
+    TextStyle tStyle =
+        titleStyle ?? TextStyle(fontWeight: FontWeight.bold, fontSize: tSize);
+    Text titleWidget = Text(title, style: tStyle);
+    titles.add(titleWidget);
 
     if (subtitle != null) {
       Widget inset = layout == FLAppBarTitleLayout.horizontal
@@ -97,7 +94,7 @@ class FLAppBarTitle extends StatelessWidget {
     final Widget titleWidget = _buildTitles();
     ThemeData themeData = Theme.of(context);
     final Color tintColor = themeData.appBarTheme.titleTextStyle?.color ??
-        (themeData.primaryTextTheme.headline6?.color ?? Colors.white);
+        (themeData.primaryTextTheme.titleLarge?.color ?? Colors.white);
     List<Widget> children = [];
 
     // build left

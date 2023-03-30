@@ -184,17 +184,6 @@ AlignmentDirectional? flStringToAlignmentDirectional(
   }
 }
 
-// Overflow? flStringToOverflow(String? overflow) {
-//   switch (overflow) {
-//     case FLDyOverflowType.visible:
-//       return Overflow.visible;
-//     case FLDyOverflowType.clip:
-//       return Overflow.clip;
-//     default:
-//       return null;
-//   }
-// }
-
 StackFit? flStringToStackFit(String? stackFit) {
   switch (stackFit) {
     case FLDyStackFitType.loose:

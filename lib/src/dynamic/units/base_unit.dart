@@ -19,9 +19,7 @@ abstract class FLDyRenderUnit extends FLDyBaseUnit {
     List<Widget> children = [];
     unitModels?.forEach((FLDyUnitModel unitModel) {
       Widget? widget = markupUnit(unitModel);
-      if (widget != null) {
-        children.add(widget);
-      }
+      children.add(widget);
     });
     return children;
   }
@@ -34,17 +32,13 @@ abstract class FLDyRenderUnit extends FLDyBaseUnit {
       child = resolveAlignChildren(unitModel.align!, unitModel.children!);
     else if (unitModel.child != null) {
       var widget = markupUnit(unitModel.child!);
-      if (widget != null) {
-        child = widget;
-      }
+      child = widget;
     }
     return child;
   }
 
   // resolve child with align
   Widget resolveAlignChild(FLDyUnitAlign align, FLDyUnitModel childModel) {
-    assert(align != null);
-    assert(childModel != null);
     final Widget? widget = markupUnit(childModel);
     return FLDyAlignUnit(
       align: align,
@@ -55,8 +49,6 @@ abstract class FLDyRenderUnit extends FLDyBaseUnit {
   // resolve children with align
   Widget resolveAlignChildren(
       FLDyUnitAlign align, List<FLDyUnitModel> childModels) {
-    assert(align != null);
-    assert(childModels != null);
     final List<Widget> widgets = markupUnits(childModels);
     return FLDyAlignUnit(
       align: align,
@@ -90,8 +82,7 @@ abstract class FLDyRenderUnit extends FLDyBaseUnit {
 }
 
 class FLDyAlignUnit extends FLDyBaseUnit {
-  FLDyAlignUnit({required this.align, this.child, this.children})
-      : assert(align != null);
+  FLDyAlignUnit({required this.align, this.child, this.children});
 
   final FLDyUnitAlign align;
   final Widget? child;

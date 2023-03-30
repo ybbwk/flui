@@ -9,7 +9,7 @@ class FLRenderSliverPersistentHeader extends RenderSliver
   FLRenderSliverPersistentHeader({
     RenderObject? header,
     RenderSliver? content,
-    overlapsContent: false,
+    overlapsContent = false,
   })  : assert(overlapsContent != null),
         _overlapsContent = overlapsContent {
     this.header = header as RenderBox?;
@@ -23,7 +23,6 @@ class FLRenderSliverPersistentHeader extends RenderSliver
   bool get overlapsContent => _overlapsContent;
   bool _overlapsContent;
   set overlapsContent(bool value) {
-    assert(value != null);
     if (_overlapsContent == value) return;
     _overlapsContent = value;
     markNeedsLayout();
@@ -92,7 +91,6 @@ class FLRenderSliverPersistentHeader extends RenderSliver
   double computeHeaderExtent() {
     if (header == null) return 0.0;
     assert(header!.hasSize);
-    assert(constraints.axis != null);
     switch (constraints.axis) {
       case Axis.vertical:
         return header!.size.height;
@@ -191,8 +189,6 @@ class FLRenderSliverPersistentHeader extends RenderSliver
 
       final SliverPhysicalParentData? contentParentData =
           content?.parentData as SliverPhysicalParentData?;
-      assert(constraints.axisDirection != null);
-      assert(constraints.growthDirection != null);
       switch (axisDirection) {
         case AxisDirection.up:
           contentParentData?.paintOffset = Offset.zero;
@@ -313,7 +309,6 @@ class FLRenderSliverPersistentHeader extends RenderSliver
 
   @override
   void applyPaintTransform(RenderObject child, Matrix4 transform) {
-    assert(child != null);
     final SliverPhysicalParentData? childParentData =
         child.parentData as SliverPhysicalParentData?;
     childParentData?.applyPaintTransform(transform);
