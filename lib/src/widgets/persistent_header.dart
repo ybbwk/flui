@@ -12,8 +12,7 @@ class FLPersistentHeaderState {
   const FLPersistentHeaderState(
     this.scrollPercentage,
     this.pinning,
-  )   : assert(scrollPercentage != null),
-        assert(pinning != null);
+  );
 
   final double scrollPercentage;
   final bool pinning;
@@ -28,7 +27,7 @@ class FLPersistentHeaderState {
   }
 
   @override
-  int get hashCode => hashValues(scrollPercentage, pinning);
+  int get hashCode => Object.hash(scrollPercentage, pinning);
 }
 
 class FLSliverPersistentHeaderWidget extends RenderObjectWidget {
@@ -136,7 +135,7 @@ class FLSliverPersistentHeaderWidgetElement extends RenderObjectElement {
   }
 
   @override
-  void insertChildRenderObject(RenderObject child, slot) {
+  void insertRenderObjectChild(RenderObject child, slot) {
     final FLRenderSliverPersistentHeader renderObject =
         this.renderObject as FLRenderSliverPersistentHeader;
     if (slot == 0) renderObject.header = child as RenderBox;
@@ -145,10 +144,11 @@ class FLSliverPersistentHeaderWidgetElement extends RenderObjectElement {
   }
 
   @override
-  void moveChildRenderObject(RenderObject child, slot) {}
+  void moveRenderObjectChild(
+      RenderObject child, Object? oldSlot, Object? newSlot) {}
 
   @override
-  void removeChildRenderObject(RenderObject child) {
+  void removeRenderObjectChild(RenderObject child, Object? slot) {
     final FLRenderSliverPersistentHeader renderObject =
         this.renderObject as FLRenderSliverPersistentHeader;
     if (renderObject.header == child) renderObject.header = null;
@@ -164,8 +164,7 @@ class FLPersistentHeaderLayoutBuilder extends RenderObjectWidget {
   FLPersistentHeaderLayoutBuilder({
     Key? key,
     required this.builder,
-  })  : assert(builder != null),
-        super(key: key);
+  }) : super(key: key);
 
   final FLPersistentHeaderLayoutWidgetBuilder builder;
 
@@ -236,14 +235,12 @@ class _FLPersistentHeaderLayoutBuilderElement extends RenderObjectElement {
   void _layout(FLPersistentHeaderConstraints constraints) {
     owner?.buildScope(this, () {
       Widget? built;
-      if (widget.builder != null) {
-        try {
-          built = widget.builder(this, constraints);
-          debugWidgetBuilderValue(widget, built);
-        } catch (e, stack) {
-          built = ErrorWidget.builder(
-              _debugReportException('building $widget', e, stack));
-        }
+      try {
+        built = widget.builder(this, constraints);
+        debugWidgetBuilderValue(widget, built);
+      } catch (e, stack) {
+        built = ErrorWidget.builder(
+            _debugReportException('building $widget', e, stack));
       }
 
       try {
@@ -258,7 +255,7 @@ class _FLPersistentHeaderLayoutBuilderElement extends RenderObjectElement {
   }
 
   @override
-  void insertChildRenderObject(RenderObject child, slot) {
+  void insertRenderObjectChild(RenderObject child, slot) {
     final RenderObjectWithChildMixin<RenderObject> renderObject =
         this.renderObject;
     assert(slot == null);
@@ -268,10 +265,11 @@ class _FLPersistentHeaderLayoutBuilderElement extends RenderObjectElement {
   }
 
   @override
-  void moveChildRenderObject(RenderObject child, slot) {}
+  void moveRenderObjectChild(
+      RenderObject child, Object? oldSlot, Object? newSlot) {}
 
   @override
-  void removeChildRenderObject(RenderObject child) {
+  void removeRenderObjectChild(RenderObject child, Object? slot) {
     final FLRenderPersistentHeaderLayoutBuilder renderObject =
         this.renderObject;
     assert(renderObject.child == child);

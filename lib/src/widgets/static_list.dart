@@ -148,14 +148,12 @@ class FLStaticListView extends StatelessWidget {
                   style: sectionData.headerTitleStyle ??
                       TextStyle(
                           color: Colors.grey,
-                          fontSize: themeData.textTheme.subtitle1?.fontSize))
+                          fontSize: themeData.textTheme.titleMedium?.fontSize))
             ],
           );
-    final EdgeInsetsGeometry padding = sectionData.headerTitleIntent != null
-        ? (isRtl
-            ? EdgeInsets.only(right: sectionData.headerTitleIntent)
-            : EdgeInsets.only(left: sectionData.headerTitleIntent))
-        : EdgeInsets.zero;
+    final EdgeInsetsGeometry padding = isRtl
+        ? EdgeInsets.only(right: sectionData.headerTitleIntent)
+        : EdgeInsets.only(left: sectionData.headerTitleIntent);
     final headerHeight = sectionData.headerHeight ??
         (sectionData.headerTitle != null
             ? kStaticHeaderHeight
@@ -194,7 +192,7 @@ class FLStaticListView extends StatelessWidget {
       height: kStaticButtonHeight,
       child: TextButton(
         style: TextButton.styleFrom(
-          primary: itemData.buttonTitleColor,
+          foregroundColor: itemData.buttonTitleColor,
           backgroundColor: itemData.buttonColor,
         ),
         child: Flex(
@@ -240,7 +238,7 @@ class FLStaticListView extends StatelessWidget {
                 Text(itemData.accessoryString!,
                     style: TextStyle(
                         color: Colors.grey,
-                        fontSize: themeData.textTheme.subtitle1?.fontSize)),
+                        fontSize: themeData.textTheme.titleMedium?.fontSize)),
                 icon
               ],
             );
